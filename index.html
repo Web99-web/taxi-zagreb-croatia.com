@@ -1,52 +1,80 @@
 <!DOCTYPE html>
 <html lang="hr">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Taxi Zagreb – City & Airport | taxi-zagreb-croatia.com</title>
-<meta name="description" content="Taxi Zagreb: zračna luka ↔︎ centar, pre-book fiksne vožnje, van/minibus, dječja sjedalica, računi na firmu. WhatsApp & telefon 0–24.">
+<meta name="description" content="Taxi Zagreb: zračna luka ↔︎ centar, pre-book fiksne vožnje, van/minibus, dječja sjedalica, računi na firmu. WhatsApp & telefon 0–24." />
 <link rel="canonical" href="https://taxi-zagreb-croatia.com/">
+
+<!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="Taxi Zagreb – City & Airport">
-<meta property="og:description" content="Fiksne cijene, dječja sjedalica, meet&greet, minivan.">
+<meta property="og:description" content="Fiksne cijene, dječja sjedalica, meet & greet, minivan.">
 <meta property="og:url" content="https://taxi-zagreb-croatia.com/">
 <meta property="og:image" content="https://images.unsplash.com/photo-1519583194965-de5f6c1f5a49?auto=format&fit=crop&w=1600&q=80">
 <meta name="twitter:card" content="summary_large_image">
 
 <style>
-  :root{--bg:rgba(0,0,0,.45);--brand:#0ea5e9;--card:rgba(255,255,255,.95)}
-  *{box-sizing:border-box} html{scroll-behavior:smooth}
-  body{
-    margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:#fff;
-    background-image:linear-gradient(var(--bg),var(--bg)),url('https://images.unsplash.com/photo-1519583194965-de5f6c1f5a49?auto=format&fit=crop&w=2000&q=80');
-    background-size:cover;background-position:center;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:28px
+  :root{
+    --brand:#0ea5e9; --brand-2:#1276a7;
+    --card:#ffffff; --ink:#0b1a24; --muted:#5b6b7a;
+    --line:#e8eef5; --chip:#f4f8fb;
   }
-  .wrap{width:min(1100px,100%)}
-  .hero{padding:28px;border-radius:22px;background:linear-gradient(180deg,rgba(255,255,255,.10),rgba(255,255,255,.06));border:1px solid rgba(255,255,255,.2)}
-  h1{margin:0 0 .4rem;font-size:clamp(28px,6vw,48px);letter-spacing:.3px}
-  .tag{opacity:.95;margin:0 0 16px}
-  .ctas{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 16px}
-  .cta{background:var(--brand);color:#fff;text-decoration:none;font-weight:700;border-radius:999px;padding:10px 16px;display:inline-block}
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; color:var(--ink);
+    font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    /* bijelkasta pozadina */
+    background: linear-gradient(180deg,#fff 0%,#f8fbff 60%,#f2f7ff 100%);
+  }
+  .wrap{ max-width:1100px; margin:32px auto; padding:0 18px }
+  .hero{
+    padding:24px; border-radius:20px;
+    background:var(--card);
+    border:1px solid var(--line);
+    box-shadow:0 8px 28px rgba(16,24,40,.06);
+  }
+  h1{ margin:0 0 .5rem; font-size:clamp(28px,6vw,46px); letter-spacing:.3px }
+  .tag{ margin:0 0 14px; color:var(--muted) }
 
-  .grid{margin-top:16px;display:grid;gap:14px;grid-template-columns:1fr}
-  @media(min-width:900px){ .grid{grid-template-columns:1.5fr .9fr} }
-  .card{background:var(--card);color:#0b1a24;border-radius:16px;padding:18px}
-  .list{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-  .list div{background:#f4f8fb;border:1px solid #e7eef5;border-radius:12px;padding:10px;font-weight:600;text-align:center}
-  .routes{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:10px}
-  .routes div{background:#f7f7f7;border:1px dashed #e2e2e2;border-radius:12px;padding:10px;text-align:center}
+  .ctas{ display:flex; gap:10px; flex-wrap:wrap; margin:10px 0 16px }
+  .cta{
+    background:var(--brand); color:#fff; text-decoration:none; font-weight:700;
+    border-radius:999px; padding:10px 16px; display:inline-block
+  }
+  .cta:hover{ background:var(--brand-2) }
 
-  /* Ads (4 prozora) */
-  .ads{margin-top:16px;display:grid;gap:14px;grid-template-columns:1fr}
-  @media(min-width:900px){ .ads{grid-template-columns:repeat(4,1fr)} }
-  .ad{background:#f8fbff;border:1px solid #e6eef6;border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
-  .ad img{width:100%;height:150px;object-fit:cover;display:block}
-  .ad .inner{padding:12px}
-  .ad h3{margin:.2rem 0 .4rem;font-size:16px}
-  .ad p{margin:0 0 .6rem;font-size:13px;opacity:.9}
-  .btns{display:flex;gap:8px;flex-wrap:wrap}
-  .btn-sm{display:inline-block;padding:8px 12px;border-radius:999px;background:#0ea5e9;color:#fff;text-decoration:none;font-weight:700;font-size:13px}
-  .muted{font-size:12px;opacity:.75}
-  footer{margin-top:14px;font-size:12px;opacity:.85;text-align:center}
+  .grid{ display:grid; gap:14px; grid-template-columns:1fr; margin-top:12px }
+  @media(min-width:900px){ .grid{ grid-template-columns:1.5fr .9fr } }
+  .card{
+    background:var(--card); border:1px solid var(--line); border-radius:16px; padding:18px;
+    box-shadow:0 6px 20px rgba(16,24,40,.04)
+  }
+  .chips{ display:grid; grid-template-columns:repeat(3,1fr); gap:10px }
+  .chip{
+    background:var(--chip); border:1px solid var(--line); border-radius:12px;
+    padding:10px; font-weight:600; text-align:center
+  }
+  .routes{ display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-top:10px }
+  .route{ background:#f7f9fc; border:1px dashed var(--line); border-radius:12px; padding:10px; text-align:center }
+  .muted{ color:var(--muted); font-size:12px; margin-top:8px }
+
+  /* 4 oglasna prozora */
+  .ads{ margin-top:16px; display:grid; gap:14px; grid-template-columns:1fr }
+  @media(min-width:900px){ .ads{ grid-template-columns:repeat(4,1fr) } }
+  .ad{ background:var(--card); border:1px solid var(--line); border-radius:16px; overflow:hidden; display:flex; flex-direction:column; box-shadow:0 6px 20px rgba(16,24,40,.04) }
+  .ad img{ width:100%; aspect-ratio:16/9; height:auto; object-fit:cover; display:block }
+  .ad .inner{ padding:12px }
+  .ad h3{ margin:.2rem 0 .35rem; font-size:16px }
+  .ad p{ margin:0 0 .6rem; font-size:13px; color:var(--muted) }
+  .btns{ display:flex; gap:8px; flex-wrap:wrap }
+  .btn-sm{ display:inline-block; padding:8px 12px; border-radius:999px; background:var(--brand); color:#fff; text-decoration:none; font-weight:700; font-size:13px }
+  .btn-sm:hover{ background:var(--brand-2) }
+
+  details summary{ cursor:pointer; font-weight:600 }
+  footer{ margin:18px 0 6px; text-align:center; color:var(--muted); font-size:12px }
 </style>
 </head>
 <body>
@@ -54,6 +82,7 @@
     <section class="hero">
       <h1>Taxi Zagreb — City & Airport</h1>
       <p class="tag">Fiksne cijene • Pre-book • Dječja sjedalica • Minivan/Minibus • Račun na firmu • 0–24</p>
+
       <div class="ctas">
         <a class="cta" id="call-top" href="#">Nazovi</a>
         <a class="cta" id="wa-top" href="#" target="_blank" rel="noopener">WhatsApp</a>
@@ -63,27 +92,27 @@
       <div class="grid">
         <article class="card">
           <h2>Usluge</h2>
-          <div class="list">
-            <div>City taxi</div>
-            <div>Airport FRANJO TUĐMAN</div>
-            <div>Fiksne cijene</div>
-            <div>Van / Minibus</div>
-            <div>Dječja sjedalica</div>
-            <div>Invoice / kartice</div>
+          <div class="chips">
+            <div class="chip">City taxi</div>
+            <div class="chip">Airport FRANJO TUĐMAN</div>
+            <div class="chip">Fiksne cijene</div>
+            <div class="chip">Van / Minibus</div>
+            <div class="chip">Dječja sjedalica</div>
+            <div class="chip">Invoice / kartice</div>
           </div>
 
           <h3 style="margin:14px 0 6px">Primjeri relacija (fiksno)</h3>
           <div class="routes">
-            <div>Centar ⇄ Zračna luka — <strong>€XX</strong></div>
-            <div>Centar ⇄ Novi Zagreb — <strong>€XX</strong></div>
-            <div>Zagreb ⇄ Plitvice — <strong>€XXX</strong></div>
+            <div class="route">Centar ⇄ Zračna luka — <strong>€XX</strong></div>
+            <div class="route">Centar ⇄ Novi Zagreb — <strong>€XX</strong></div>
+            <div class="route">Zagreb ⇄ Plitvice — <strong>€XXX</strong></div>
           </div>
           <p class="muted">* Cijene informativne; potvrda pri rezervaciji. Flight tracking • meet & greet • free wait time.</p>
         </article>
 
         <aside class="card">
           <h2>Zašto mi, a ne aplikacija?</h2>
-          <ul style="margin:0 0 10px 18px;line-height:1.5">
+          <ul style="margin:0 0 10px 18px; line-height:1.55">
             <li>Pre-book točno vrijeme (04–06h, bez iznenađenja)</li>
             <li>Fiksna cijena (nema surgea, nema iznenađenja)</li>
             <li>Van/minibus, mnogo prtljage, pet friendly</li>
@@ -93,68 +122,70 @@
         </aside>
       </div>
 
-      <!-- 4 oglasna prozora -->
+      <!-- 4 OGLASNA PROZORA (Taxi 1–4) -->
       <div class="ads">
 
-       <!-- #1 Tvoj prijatelj -->
-      <article class="ad">
-        <img src="/images/partner-car.jpg"
-         alt="Taxi partner – bijela Toyota Corolla karavan"
-         loading="lazy">
-      <div class="inner">
-          <h3>Taxi partner — <span id="friend-name">Vaš vozač</span></h3>
-        <p>0330–1330 • Airport • City • Dječja sjedalica</p>
-        <div class="btns">
-        <a class="btn-sm" id="call-friend" href="#">Nazovi</a>
-        <a class="btn-sm" id="wa-friend" href="#" target="_blank" rel="noopener">WhatsApp</a>
-        <a class="btn-sm" href="mailto:info@taxi-zagreb-croatia.com?subject=Upit%20za%20voza%C4%8Da%20-%20taxi-zagreb-croatia.com">Email</a>
-      </div>
-      </div>
-     </article>
-
-
-        <!-- #2 Slobodan oglas -->
+        <!-- Taxi 1 – partner (slika Corolle s Unsplash-a; zamijeni po želji) -->
         <article class="ad">
-          <img src="https://images.unsplash.com/photo-1562577309-2592ab84b1bc?auto=format&fit=crop&w=1200&q=80" alt="City taxi" loading="lazy">
+          <img src="https://source.unsplash.com/1600x900/?toyota,corolla,white"
+               alt="Toyota Corolla – stock photo" loading="lazy">
           <div class="inner">
-            <h3>Oglas slobodan — City taxi</h3>
+            <h3>Taxi 1 — vaš vozač</h3>
+            <p>0–24 • Airport • City • Dječja sjedalica</p>
+            <div class="btns">
+              <a class="btn-sm" id="call-friend" href="#">Nazovi</a>
+              <a class="btn-sm" id="wa-friend" href="#" target="_blank" rel="noopener">WhatsApp</a>
+              <a class="btn-sm" href="mailto:info@taxi-zagreb-croatia.com?subject=Upit%20za%20Taxi%201%20-%20taxi-zagreb-croatia.com">Email</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Taxi 2 -->
+        <article class="ad">
+          <img src="https://images.unsplash.com/photo-1562577309-2592ab84b1bc?auto=format&fit=crop&w=1600&q=80"
+               alt="City taxi – stock" loading="lazy">
+          <div class="inner">
+            <h3>Taxi 2 — City taxi</h3>
             <p>Vidljiv na naslovnici. Fiksne vožnje za goste i firme.</p>
             <div class="btns">
-              <a class="btn-sm" href="mailto:zagrebrental2000@gmail.com?subject=Oglas%20City%20taxi%20-%20taxi-zagreb-croatia.com">Pošalji upit</a>
+              <a class="btn-sm" href="mailto:zagrebrental2000@gmail.com?subject=Oglas%20Taxi%202%20-%20taxi-zagreb-croatia.com">Pošalji upit</a>
             </div>
           </div>
         </article>
 
-        <!-- #3 Slobodan oglas -->
+        <!-- Taxi 3 -->
         <article class="ad">
-          <img src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&fit=crop&w=1200&q=80" alt="Van / Minibus" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&fit=crop&w=1600&q=80"
+               alt="Van / Minibus – stock" loading="lazy">
           <div class="inner">
-            <h3>Oglas slobodan — Van/Minibus</h3>
-            <p>Grupe, transferi, mnogo prtljage. Račun na firmu.</p>
+            <h3>Taxi 3 — Van/Minibus</h3>
+            <p>Grupe, transferi, puno prtljage. Račun na firmu.</p>
             <div class="btns">
-              <a class="btn-sm" href="mailto:zagrebrental2000@gmail.com?subject=Oglas%20Van%2FMinibus%20-%20taxi-zagreb-croatia.com">Pošalji upit</a>
+              <a class="btn-sm" href="mailto:zagrebrental2000@gmail.com?subject=Oglas%20Taxi%203%20-%20taxi-zagreb-croatia.com">Pošalji upit</a>
             </div>
           </div>
         </article>
 
-        <!-- #4 Slobodan oglas -->
+        <!-- Taxi 4 -->
         <article class="ad">
-          <img src="https://images.unsplash.com/photo-1533681018184-68bd1d883546?auto=format&fit=crop&w=1200&q=80" alt="Private driver / events" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1533681018184-68bd1d883546?auto=format&fit=crop&w=1600&q=80"
+               alt="Private driver / events – stock" loading="lazy">
           <div class="inner">
-            <h3>Oglas slobodan — Private driver</h3>
+            <h3>Taxi 4 — Private driver</h3>
             <p>Business vožnje, eventi, čekanje po satu. Kartice.</p>
             <div class="btns">
-              <a class="btn-sm" href="mailto:zagrebrental2000@gmail.com?subject=Oglas%20Private%20driver%20-%20taxi-zagreb-croatia.com">Pošalji upit</a>
+              <a class="btn-sm" href="mailto:zagrebrental2000@gmail.com?subject=Oglas%20Taxi%204%20-%20taxi-zagreb-croatia.com">Pošalji upit</a>
             </div>
           </div>
         </article>
 
       </div>
 
-      <div id="faq" class="card" style="margin-top:14px">
+      <!-- FAQ -->
+      <div id="faq" class="card" style="margin-top:16px">
         <h2>FAQ</h2>
         <details><summary>Imate li dječju sjedalicu?</summary><p>Da, uz prethodnu najavu (bez doplate).</p></details>
-        <details><summary>Kako plaćam?</summary><p>Gotovina, kartice, ili račun na firmu.</p></details>
+        <details><summary>Kako plaćam?</summary><p>Gotovina, kartice ili račun na firmu.</p></details>
         <details><summary>Što ako mi kasni let?</summary><p>Pratimo let i prilagođavamo preuzimanje (bez dodatne naplate razumnog čekanja).</p></details>
       </div>
 
@@ -162,7 +193,7 @@
     </section>
   </main>
 
-  <!-- SCHEMA.ORG -->
+  <!-- Schema.org -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -187,23 +218,45 @@
 
   <!-- WhatsApp + Tel builder (promijeni brojeve ovdje) -->
   <script>
-  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-  const WA_PHONE = "+385 97 762 0385";   // tvoj/prijateljev WhatsApp (može bilo koji format)
-  const TEL_PHONE = "+385 97 762 0385";  // za tel: link (sa +)
-  const WA_TEXT  = "Pozdrav! Javljam se preko taxi-zagreb-croatia.com.\nPolazak:\nOdredište:\nVrijeme:";
-  // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+  // >>>>> POSTAVI SVOJE BROJEVE (može s +, razmacima, crtama – skripta ih očisti)
+  const TEL_PHONE   = "+385 97 762 0385";   // glavni telefon (top gumb)
+  const WA_PHONE    = "+385 97 762 0385";   // glavni WhatsApp (top gumb)
+  const FRIEND_TEL  = "+385 97 762 0385";   // telefon za Taxi 1
+  const FRIEND_WA   = "+385 97 762 0385";   // WhatsApp za Taxi 1
+  const WA_TEXT = "Pozdrav! Javljam se preko taxi-zagreb-croatia.com.\nPolazak:\nOdredište:\nVrijeme:";
+  // <<<<<
 
-  (function () {
-    // tel
-    document.getElementById('call-top').href = "tel:" + TEL_PHONE.replace(/\s/g,"");
-    document.getElementById('call-friend').href = "tel:" + TEL_PHONE.replace(/\s/g,"");
+  (function(){
+    const tel = n => "tel:" + String(n).replace(/\s+/g,'');
+    const wa  = n => "https://api.whatsapp.com/send?phone=" + String(n).replace(/\D/g,'') + "&text=" + encodeURIComponent(WA_TEXT);
 
-    // wa
-    const digits = WA_PHONE.replace(/\D/g, ""); // zadrži samo brojke
-    const waUrl = "https://api.whatsapp.com/send?phone=" + digits + "&text=" + encodeURIComponent(WA_TEXT);
-    document.getElementById('wa-top').href = waUrl;
-    document.getElementById('wa-friend').href = waUrl;
+    // top bar
+    const callTop = document.getElementById('call-top');
+    const waTop   = document.getElementById('wa-top');
+    if(callTop) callTop.href = tel(TEL_PHONE);
+    if(waTop)   waTop.href   = wa(WA_PHONE);
+
+    // Taxi 1 (partner)
+    const callFr = document.getElementById('call-friend');
+    const waFr   = document.getElementById('wa-friend');
+    if(callFr) callFr.href = tel(FRIEND_TEL);
+    if(waFr)   waFr.href   = wa(FRIEND_WA);
   })();
+  </script>
+
+  <!-- Global fallback za slike (da ne ostane ALT tekst) -->
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('img').forEach(img => {
+      if (!img.getAttribute('onerror')) {
+        img.setAttribute('onerror',
+          "this.onerror=null;this.src='https://images.unsplash.com/photo-1533681018184-68bd1d883546?auto=format&fit=crop&w=1600&q=80';"
+        );
+      }
+      img.loading = 'lazy';
+      img.referrerPolicy = 'no-referrer';
+    });
+  });
   </script>
 </body>
 </html>
