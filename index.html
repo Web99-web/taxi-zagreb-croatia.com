@@ -12,64 +12,58 @@
 <meta property="og:title" content="Taxi Zagreb – City & Airport">
 <meta property="og:description" content="Pre-book • Zračna luka • Veća prtljaga • Račun na firmu">
 <meta property="og:url" content="https://taxi-zagreb-croatia.com/">
-<meta property="og:image" content="https://images.unsplash.com/photo-1519583194965-de5f6c1f5a49?auto=format&fit=crop&w=1600&q=80">
-<meta name="twitter:card" content="summary_large_image">
+<meta property="og:image" content="https://source.unsplash.com/1600x900/?taxi,car">
 
 <style>
   :root{
     --brand:#0ea5e9; --brand-2:#1276a7;
-    --card:#ffffff; --ink:#0b1a24; --muted:#5b6b7a;
-    --line:#e8eef5; --chip:#f4f8fb;
+    --ink:#0b1a24; --muted:#5b6b7a;
+    --line:#e8eef5; --chip:#f4f8fb; --card:#ffffff;
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
   body{
     margin:0; color:var(--ink);
     font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-    /* bijelkasta pozadina */
     background: linear-gradient(180deg,#fff 0%,#f9fbff 60%,#f3f7ff 100%);
   }
-  .wrap{ max-width:1100px; margin:32px auto; padding:0 18px }
-  .hero{
-    padding:24px; border-radius:20px;
-    background:var(--card);
-    border:1px solid var(--line);
-    box-shadow:0 8px 28px rgba(16,24,40,.06);
-  }
-  h1{ margin:0 0 .5rem; font-size:clamp(28px,6vw,46px); letter-spacing:.3px }
-  .tag{ margin:0 0 14px; color:var(--muted) }
 
-  .ctas{ display:flex; gap:10px; flex-wrap:wrap; margin:10px 0 16px }
-  .cta{
-    background:var(--brand); color:#fff; text-decoration:none; font-weight:700;
-    border-radius:999px; padding:10px 16px; display:inline-block
+  /* HERO (auto u pozadini) */
+  .hero-wrap{
+    position:relative; isolation:isolate;
+    background:
+      linear-gradient(180deg, rgba(255,255,255,.88), rgba(255,255,255,.92)),
+      url('https://source.unsplash.com/1600x900/?taxi,car,road');
+    background-size:cover; background-position:center;
+    border-bottom:1px solid var(--line);
   }
+  .wrap{ max-width:1100px; margin:0 auto; padding:28px 18px }
+
+  .hero h1{ margin:0 0 .4rem; font-size:clamp(28px,6vw,46px); letter-spacing:.3px }
+  .tag{ margin:0; color:var(--muted) }
+  .ctas{ display:flex; gap:10px; flex-wrap:wrap; margin:12px 0 4px }
+  .cta{ background:var(--brand); color:#fff; text-decoration:none; font-weight:700; border-radius:999px; padding:10px 16px; display:inline-block }
   .cta:hover{ background:var(--brand-2) }
 
-  .grid{ display:grid; gap:14px; grid-template-columns:1fr; margin-top:12px }
+  /* SECTIONS */
+  .section{ padding:22px 0 }
+  .grid{ display:grid; gap:14px; grid-template-columns:1fr }
   @media(min-width:900px){ .grid{ grid-template-columns:1.5fr .9fr } }
+
   .card{
     background:var(--card); border:1px solid var(--line); border-radius:16px; padding:18px;
-    box-shadow:0 6px 20px rgba(16,24,40,.04)
+    box-shadow:0 6px 20px rgba(16,24,40,.05)
   }
   .chips{ display:grid; grid-template-columns:repeat(3,1fr); gap:10px }
-  .chip{
-    background:var(--chip); border:1px solid var(--line); border-radius:12px;
-    padding:10px; font-weight:600; text-align:center
-  }
+  .chip{ background:var(--chip); border:1px solid var(--line); border-radius:12px; padding:10px; text-align:center; font-weight:600 }
+  .muted{ color:var(--muted); font-size:13px }
 
-  /* 4 oglasna prozora */
-  .ads{ margin-top:16px; display:grid; gap:14px; grid-template-columns:1fr }
+  /* 4 TAXI KARTICE */
+  .ads{ display:grid; gap:14px; grid-template-columns:1fr; margin-top:16px }
   @media(min-width:900px){ .ads{ grid-template-columns:repeat(4,1fr) } }
-  .ad{
-    background:var(--card); border:1px solid var(--line); border-radius:16px; overflow:hidden;
-    display:flex; flex-direction:column; box-shadow:0 6px 20px rgba(16,24,40,.04); position:relative
-  }
+  .ad{ background:var(--card); border:1px solid var(--line); border-radius:16px; overflow:hidden; display:flex; flex-direction:column; position:relative; box-shadow:0 6px 20px rgba(16,24,40,.05) }
+  .ad .taglabel{ position:absolute; left:10px; top:10px; font-size:12px; font-weight:700; background:rgba(255,255,255,.92); border:1px solid var(--line); border-radius:999px; padding:4px 8px }
   .ad img{ width:100%; aspect-ratio:16/9; height:auto; object-fit:cover; display:block }
-  .ad .taglabel{
-    position:absolute; left:10px; top:10px; font-size:12px; font-weight:700;
-    background:rgba(255,255,255,.92); border:1px solid var(--line); border-radius:999px; padding:4px 8px
-  }
   .ad .inner{ padding:12px }
   .ad h3{ margin:.25rem 0 .35rem; font-size:16px }
   .ad p{ margin:0 0 .6rem; font-size:13px; color:var(--muted) }
@@ -78,21 +72,28 @@
   .btn-sm:hover{ background:var(--brand-2) }
 
   details summary{ cursor:pointer; font-weight:600 }
-  footer{ margin:18px 0 6px; text-align:center; color:var(--muted); font-size:12px }
+  footer{ margin:24px 0 20px; text-align:center; color:var(--muted); font-size:12px }
 </style>
 </head>
 <body>
-  <main class="wrap">
-    <section class="hero">
+
+  <!-- HERO -->
+  <div class="hero-wrap">
+    <div class="wrap hero">
       <h1>Taxi Zagreb — City & Airport</h1>
       <p class="tag">Poziv/WhatsApp 0–24 • Pre-book • Veća prtljaga • Minivan/Minibus (po upitu) • Račun na firmu</p>
-
       <div class="ctas">
         <a class="cta" id="call-top" href="#">Nazovi</a>
         <a class="cta" id="wa-top" href="#" target="_blank" rel="noopener">WhatsApp</a>
         <a class="cta" href="mailto:info@taxi-zagreb-croatia.com?bcc=zagrebrental2000@gmail.com&subject=Upit%20s%20taxi-zagreb-croatia.com">Email</a>
       </div>
+    </div>
+  </div>
 
+  <main class="wrap">
+
+    <!-- USLUGE + ZAŠTO MI -->
+    <section class="section">
       <div class="grid">
         <article class="card">
           <h2>Usluge</h2>
@@ -104,40 +105,32 @@
             <div class="chip">Minivan/Minibus (po upitu)</div>
             <div class="chip">Račun na firmu</div>
           </div>
-
-          <h3 style="margin:14px 0 6px">Popularne relacije</h3>
-          <p style="margin:0;color:var(--muted);font-size:13px">
-            Cijena prema taksimetru ili dogovoru. Vrijeme ovisi o prometu.
-          </p>
+          <p class="muted" style="margin-top:10px">Cijena prema taksimetru ili dogovoru prije vožnje.</p>
         </article>
 
         <aside class="card">
           <h2>Zašto nas zvati?</h2>
           <ul style="margin:0 0 10px 18px; line-height:1.55">
-            <li>Pre-book točno vrijeme (npr. rano ujutro)</li>
-            <li>Transparentno – taksimetar ili dogovor prije vožnje</li>
+            <li>Pre-book (npr. rano ujutro / kasno navečer)</li>
+            <li>Transparentno — taksimetar ili dogovor prije vožnje</li>
             <li>Veća prtljaga, minivan/minibus po upitu</li>
-            <li>Račun na firmu, komunikacija putem WhatsAppa</li>
+            <li>Račun na firmu, WhatsApp komunikacija</li>
           </ul>
-          <p style="color:var(--muted);font-size:12px">
-            Dječja sjedalica <strong>nije standardno</strong> – moguće samo po upitu i dostupnosti.
-          </p>
+          <p class="muted">Dječja sjedalica nije standardno — moguće po upitu i dostupnosti.</p>
         </aside>
       </div>
+    </section>
 
-      <!-- 4 OGLASNA PROZORA (Taxi 1–4) -->
+    <!-- TAXI 1–4 -->
+    <section class="section">
       <div class="ads">
-
-        <!-- Taxi 1 – partner (tvoja Corolla) -->
+        <!-- Taxi 1 — Corolla (partner) -->
         <article class="ad">
           <span class="taglabel">Taxi 1</span>
-          <img src="/images/taxi1.jpg"
-               alt="Taxi 1 – Toyota Corolla karavan"
-               loading="lazy"
-               onerror="this.onerror=null;this.src='https://placehold.co/800x450?text=Taxi+1';">
+          <img src="https://source.unsplash.com/800x450/?toyota,corolla,white" alt="Taxi 1 — Toyota Corolla" loading="lazy">
           <div class="inner">
-            <h3>Tvoj partner – vaš vozač</h3>
-            <p>City i Airport vožnje. Veća prtljaga, dogovor prije vožnje.</p>
+            <h3>Tvoj partner — vaš vozač</h3>
+            <p>City i Airport vožnje. Dogovor prije vožnje.</p>
             <div class="btns">
               <a class="btn-sm" id="call-friend" href="#">Nazovi</a>
               <a class="btn-sm" id="wa-friend" href="#" target="_blank" rel="noopener">WhatsApp</a>
@@ -145,87 +138,66 @@
           </div>
         </article>
 
-        <!-- Taxi 2 -->
+        <!-- Taxi 2 — sedan -->
         <article class="ad">
           <span class="taglabel">Taxi 2</span>
-          <img src="/images/taxi2.jpg"
-               alt="Taxi 2 – srednja klasa"
-               loading="lazy"
-               onerror="this.onerror=null;this.src='https://placehold.co/800x450?text=Taxi+2';">
+          <img src="https://source.unsplash.com/800x450/?sedan,car,city" alt="Taxi 2 — sedan" loading="lazy">
           <div class="inner">
             <h3>City taxi</h3>
-            <p>Brzi dolazak, kratke gradske vožnje.</p>
+            <p>Brzi dolazak, gradske vožnje.</p>
             <div class="btns">
               <a class="btn-sm" href="mailto:zagrebrental2000@gmail.com?subject=Upit%20za%20Taxi%202%20-%20taxi-zagreb-croatia.com">Pošalji upit</a>
             </div>
           </div>
         </article>
 
-        <!-- Taxi 3 -->
+        <!-- Taxi 3 — minivan -->
         <article class="ad">
           <span class="taglabel">Taxi 3</span>
-          <img src="/images/taxi3.jpg"
-               alt="Taxi 3 – kombi/minivan"
-               loading="lazy"
-               onerror="this.onerror=null;this.src='https://placehold.co/800x450?text=Taxi+3';">
+          <img src="https://source.unsplash.com/800x450/?minivan,van" alt="Taxi 3 — minivan" loading="lazy">
           <div class="inner">
             <h3>Van / Minibus</h3>
-            <p>Grupe, transferi, puno prtljage. Po upitu.</p>
+            <p>Grupe, mnogo prtljage — po upitu.</p>
             <div class="btns">
               <a class="btn-sm" href="mailto:zagrebrental2000@gmail.com?subject=Upit%20za%20Taxi%203%20-%20taxi-zagreb-croatia.com">Pošalji upit</a>
             </div>
           </div>
         </article>
 
-        <!-- Taxi 4 -->
+        <!-- Taxi 4 — business sedan -->
         <article class="ad">
           <span class="taglabel">Taxi 4</span>
-          <img src="/images/taxi4.jpg"
-               alt="Taxi 4 – business / events"
-               loading="lazy"
-               onerror="this.onerror=null;this.src='https://placehold.co/800x450?text=Taxi+4';">
+          <img src="https://source.unsplash.com/800x450/?mercedes,sedan,business" alt="Taxi 4 — business" loading="lazy">
           <div class="inner">
             <h3>Business / events</h3>
-            <p>Čekanje po satu, poslovne vožnje. Po dogovoru.</p>
+            <p>Čekanje po satu, poslovne vožnje — po dogovoru.</p>
             <div class="btns">
               <a class="btn-sm" href="mailto:zagrebrental2000@gmail.com?subject=Upit%20za%20Taxi%204%20-%20taxi-zagreb-croatia.com">Pošalji upit</a>
             </div>
           </div>
         </article>
-
       </div>
-
-      <!-- FAQ -->
-      <div id="faq" class="card" style="margin-top:16px">
-        <h2>FAQ</h2>
-        <details><summary>Imate li dječju sjedalicu?</summary><p>U pravilu ne. Ponekad moguće <em>po upitu</em> i dostupnosti.</p></details>
-        <details><summary>Kako se obračunava cijena?</summary><p>Prema taksimetru ili unaprijed dogovorenoj cijeni, ovisno o ruti i uvjetima.</p></details>
-        <details><summary>Što ako mi kasni let?</summary><p>Javite broj leta u poruci; uskladit ćemo preuzimanje (razumno vrijeme čekanja).</p></details>
-      </div>
-
-      <footer>© taxi-zagreb-croatia.com • Pre-book & transparent pricing</footer>
     </section>
-  </main>
 
-  <!-- Schema.org (osnovno) -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"TaxiService",
-    "name":"Taxi Zagreb – City & Airport",
-    "areaServed":"Zagreb",
-    "url":"https://taxi-zagreb-croatia.com/",
-    "availableChannel":{"@type":"ServiceChannel","serviceUrl":"https://api.whatsapp.com"},
-    "priceRange":"€€"
-  }
-  </script>
+    <!-- FAQ -->
+    <section class="section">
+      <div class="card">
+        <h2>FAQ</h2>
+        <details><summary>Imate li dječju sjedalicu?</summary><p>U pravilu ne; ponekad moguće po upitu i dostupnosti.</p></details>
+        <details><summary>Kako se obračunava cijena?</summary><p>Prema taksimetru ili unaprijed dogovorenoj cijeni, ovisno o ruti i uvjetima.</p></details>
+        <details><summary>Što ako mi kasni let?</summary><p>Pošaljite broj leta u poruci; uskladit ćemo preuzimanje (razumno čekanje).</p></details>
+      </div>
+    </section>
+
+    <footer>© taxi-zagreb-croatia.com • Pre-book & transparent pricing</footer>
+  </main>
 
   <!-- WhatsApp + Tel builder: PROMIJENI BROJEVE OVDJE -->
   <script>
   // glavni kontakt
   const TEL_PHONE   = "+385 97 762 0385";
   const WA_PHONE    = "+385 97 762 0385";
-  // Taxi 1 (partner) – stavi njegovo ime/telefon/WA ako je drugi broj
+  // Taxi 1 (partner) – ako je drugi broj, promijeni ovdje
   const FRIEND_TEL  = "+385 97 762 0385";
   const FRIEND_WA   = "+385 97 762 0385";
 
@@ -241,12 +213,28 @@
     if(callTop) callTop.href = tel(TEL_PHONE);
     if(waTop)   waTop.href   = wa(WA_PHONE);
 
-    // Taxi 1
+    // Taxi 1 (partner)
     const callFr = document.getElementById('call-friend');
     const waFr   = document.getElementById('wa-friend');
     if(callFr) callFr.href = tel(FRIEND_TEL);
     if(waFr)   waFr.href   = wa(FRIEND_WA);
   })();
   </script>
+
+  <!-- Global fallback za slike -->
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('img').forEach(img => {
+      if (!img.getAttribute('onerror')) {
+        img.setAttribute('onerror',
+          "this.onerror=null;this.src='https://placehold.co/800x450?text=Taxi';"
+        );
+      }
+      img.loading = 'lazy';
+      img.referrerPolicy = 'no-referrer';
+    });
+  });
+  </script>
 </body>
 </html>
+
