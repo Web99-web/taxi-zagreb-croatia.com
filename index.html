@@ -238,50 +238,85 @@
   }
   document.querySelectorAll('img[data-srcs]').forEach(setSrcWithFallback);
 
-  // 3) BROJAČI
+  <script>
+  // 3) BROJAČI (global + lokal) s fallbackom
   (function(){
     const globalEl = document.getElementById('counter-global');
     const localEl  = document.getElementById('counter-local');
 
-    // GLOBALNI (CountAPI) – po domeni
-    const NS  = 'taxi-multi';                      // zajednički namespace
-    const KEY = (location.hostname || 'local') + '-visits';
-    const api = p => `https://api.countapi.xyz/${p}`;
+    // ---------- GLOBALNI: 1) CountAPI -> 2) SeeYouFarm fallback ----------
+    const MIN_BASE = 10000;
 
-    async function ensureAtLeast(val=10000){
-      try{
-        // get current
-        let res = await fetch(api(`get/${NS}/${KEY}`));
-        if(res.status === 404){
-          await fetch(api(`create?namespace=${NS}&key=${KEY}&value=${val}`));
-        }else{
+    function fmt(n){ try { return n.toLocaleString('hr-HR'); } catch(e){ return String(n); } }
+
+    async function tryCountAPI() {
+      const NS  = 'taxi-multi';
+      const KEY = (location.hostname || 'local') + '-visits';
+      const api = (p)=>`https://api.countapi.xyz/${p}`;
+
+      // ensure >= 10000 then hit
+      let res = await fetch(api(`get/${NS}/${KEY}`), {cache:'no-store'});
+      if(res.status === 404){
+        await fetch(api(`create?namespace=${NS}&key=${KEY}&value=${MIN_BASE}`));
+      }else{
+        try{
           const cur = await res.json();
-          if(typeof cur.value === 'number' && cur.value < val){
-            await fetch(api(`set?namespace=${NS}&key=${KEY}&value=${val}`));
+          if(typeof cur.value === 'number' && cur.value < MIN_BASE){
+            await fetch(api(`set?namespace=${NS}&key=${KEY}&value=${MIN_BASE}`));
           }
-        }
-        // bump
-        const hit = await fetch(api(`hit/${NS}/${KEY}`));
-        const data = await hit.json();
-        if(globalEl) globalEl.textContent = `Posjeta (ukupno): ${ (data.value||val).toLocaleString('hr-HR') }`;
-      }catch(e){
-        if(globalEl) globalEl.textContent = `Posjeta (ukupno): n/a`;
+        }catch(e){}
       }
+      const hit = await fetch(api(`hit/${NS}/${KEY}`), {cache:'no-store'});
+      const data = await hit.json();
+      if(globalEl) globalEl.textContent = `Posjeta (ukupno): ${ fmt(data.value||MIN_BASE) }`;
+      return true;
     }
-    ensureAtLeast(10000);
 
-    // LOKALNI (localStorage)
+    async function trySeeYouFarmFallback(){
+      // SeeYouFarm broji po URL-u; ne može zadati početnu,
+      // pa prikazujemo MIN_BASE + count
+      const urlKey = encodeURIComponent(location.origin + location.pathname);
+      const svgUrl = `https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=${urlKey}`;
+      const res = await fetch(svgUrl, {cache:'no-store'});
+      const svg = await res.text();
+      // U badge SVG-u posljednji <text> je broj; grubi regex:
+      const m = svg.match(/>(\d+)<\/text>\s*<\/g>\s*<\/svg>$/) || svg.match(/>(\d+)</);
+      const raw = m ? parseInt(m[1],10) : NaN;
+      const total = isNaN(raw) ? null : (MIN_BASE + raw);
+      if(globalEl) globalEl.textContent = total ? `Posjeta (ukupno): ${fmt(total)}` : 'Posjeta (ukupno): n/a';
+    }
+
+    (async ()=>{
+      let ok = false;
+      try {
+        // pokuša CountAPI s vremenom čekanja ~1.5 s
+        const p = tryCountAPI();
+        const timeout = new Promise((_,rej)=>setTimeout(()=>rej(new Error('timeout')),1500));
+        await Promise.race([p, timeout]);
+        ok = true;
+      } catch(e) {
+        ok = false;
+      }
+      if(!ok){
+        // fallback
+        try{ await trySeeYouFarmFallback(); }
+        catch(e){ if(globalEl) globalEl.textContent = 'Posjeta (ukupno): n/a'; }
+      }
+    })();
+
+    // ---------- LOKALNI (localStorage) ----------
     const LSKEY = 'taxi_local_counter';
     try{
       let v = parseInt(localStorage.getItem(LSKEY)||'10000',10);
       if(isNaN(v) || v < 10000) v = 10000;
       v++;
       localStorage.setItem(LSKEY, String(v));
-      if(localEl) localEl.textContent = `Tvoj brojač: ${ v.toLocaleString('hr-HR') }`;
+      if(localEl) localEl.textContent = `Tvoj brojač: ${ (v).toLocaleString('hr-HR') }`;
     }catch(e){
       if(localEl) localEl.textContent = `Tvoj brojač: n/a`;
     }
   })();
-  </script>
+</script>
+
 </body>
 </html>
