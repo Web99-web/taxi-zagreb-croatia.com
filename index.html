@@ -7,74 +7,67 @@
 <meta name="description" content="Taxi Zagreb: pre-book, zračna luka, veća prtljaga, minivan/minibus po upitu, račun na firmu. Poziv i WhatsApp 0–24." />
 <link rel="canonical" href="https://taxi-zagreb-croatia.com/">
 
-<!-- OG -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="Taxi Zagreb – City & Airport">
 <meta property="og:description" content="Pre-book • Zračna luka • Veća prtljaga • Račun na firmu">
 <meta property="og:url" content="https://taxi-zagreb-croatia.com/">
-<meta property="og:image" content="https://images.unsplash.com/photo-1519583194965-de5f6c1f5a49?auto=format&fit=crop&w=1600&q=80">
+<meta property="og:image" content="https://placehold.co/1200x630?text=Taxi+Zagreb">
 
 <style>
-  :root{
-    --brand:#0ea5e9; --brand-2:#1276a7;
-    --ink:#0b1a24; --muted:#5b6b7a;
-    --line:#e8eef5; --chip:#f4f8fb; --card:#fff;
-  }
+  :root{ --brand:#0ea5e9; --brand-2:#1276a7; --ink:#0b1a24; --muted:#5b6b7a; --line:#e8eef5; --chip:#f4f8fb; --card:#fff }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
   body{
     margin:0; color:var(--ink);
     font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-    /* svijetla, bijelkasta pozadina */
     background:linear-gradient(180deg,#fff 0%,#f9fbff 60%,#f3f7ff 100%);
   }
 
-  /* HERO s automobilom u pozadini */
-  .hero-wrap{
-    position:relative; isolation:isolate;
-    background:
-      linear-gradient(180deg, rgba(255,255,255,.90), rgba(255,255,255,.94)),
-      url('https://images.unsplash.com/photo-1519583194965-de5f6c1f5a49?auto=format&fit=crop&w=2000&q=80');
-    background-size:cover; background-position:center;
-    border-bottom:1px solid var(--line);
-  }
-  .wrap{max-width:1100px;margin:0 auto;padding:28px 18px}
-  .hero h1{margin:0 0 .4rem;font-size:clamp(28px,6vw,46px)}
-  .tag{margin:0;color:var(--muted)}
-  .ctas{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0 4px}
-  .cta{background:var(--brand);color:#fff;text-decoration:none;font-weight:700;border-radius:999px;padding:10px 16px;display:inline-block}
-  .cta:hover{background:var(--brand-2)}
+  /* HERO s realnim <img> (da možemo fallbackati) */
+  .hero-wrap{ position:relative; border-bottom:1px solid var(--line); overflow:hidden }
+  .hero-bg{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0; filter:saturate(1.05) contrast(1.04) }
+  .hero-wrap::after{ content:""; position:absolute; inset:0; background:linear-gradient(180deg,rgba(255,255,255,.90),rgba(255,255,255,.94)); z-index:1 }
+  .wrap{ max-width:1100px; margin:0 auto; padding:28px 18px }
+  .hero{ position:relative; z-index:2 }
+  .hero h1{ margin:0 0 .4rem; font-size:clamp(28px,6vw,46px) }
+  .tag{ margin:0; color:var(--muted) }
+  .ctas{ display:flex; gap:10px; flex-wrap:wrap; margin:12px 0 4px }
+  .cta{ background:var(--brand); color:#fff; text-decoration:none; font-weight:700; border-radius:999px; padding:10px 16px; display:inline-block }
+  .cta:hover{ background:var(--brand-2) }
 
-  /* sekcije / kartice */
-  .section{padding:22px 0}
-  .grid{display:grid;gap:14px;grid-template-columns:1fr}
-  @media(min-width:900px){.grid{grid-template-columns:1.5fr .9fr}}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:0 6px 20px rgba(16,24,40,.05)}
-  .chips{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-  .chip{background:var(--chip);border:1px solid var(--line);border-radius:12px;padding:10px;text-align:center;font-weight:600}
-  .muted{color:var(--muted);font-size:13px}
+  /* Sekcije / kartice */
+  .section{ padding:22px 0 }
+  .grid{ display:grid; gap:14px; grid-template-columns:1fr }
+  @media(min-width:900px){ .grid{ grid-template-columns:1.5fr .9fr } }
+  .card{ background:var(--card); border:1px solid var(--line); border-radius:16px; padding:18px; box-shadow:0 6px 20px rgba(16,24,40,.05) }
+  .chips{ display:grid; grid-template-columns:repeat(3,1fr); gap:10px }
+  .chip{ background:var(--chip); border:1px solid var(--line); border-radius:12px; padding:10px; text-align:center; font-weight:600 }
+  .muted{ color:var(--muted); font-size:13px }
 
   /* Taxi 1–4 */
-  .ads{display:grid;gap:14px;grid-template-columns:1fr;margin-top:16px}
-  @media(min-width:900px){.ads{grid-template-columns:repeat(4,1fr)}}
-  .ad{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;position:relative;box-shadow:0 6px 20px rgba(16,24,40,.05)}
-  .ad .taglabel{position:absolute;left:10px;top:10px;font-size:12px;font-weight:700;background:rgba(255,255,255,.92);border:1px solid var(--line);border-radius:999px;padding:4px 8px}
-  .ad img{width:100%;aspect-ratio:16/9;height:auto;object-fit:cover;display:block}
-  .ad .inner{padding:12px}
-  .ad h3{margin:.25rem 0 .35rem;font-size:16px}
-  .ad p{margin:0 0 .6rem;font-size:13px;color:var(--muted)}
-  .btns{display:flex;gap:8px;flex-wrap:wrap}
-  .btn-sm{display:inline-block;padding:8px 12px;border-radius:999px;background:var(--brand);color:#fff;text-decoration:none;font-weight:700;font-size:13px}
-  .btn-sm:hover{background:var(--brand-2)}
+  .ads{ display:grid; gap:14px; grid-template-columns:1fr; margin-top:16px }
+  @media(min-width:900px){ .ads{ grid-template-columns:repeat(4,1fr) } }
+  .ad{ background:var(--card); border:1px solid var(--line); border-radius:16px; overflow:hidden; display:flex; flex-direction:column; position:relative; box-shadow:0 6px 20px rgba(16,24,40,.05) }
+  .ad .taglabel{ position:absolute; left:10px; top:10px; font-size:12px; font-weight:700; background:rgba(255,255,255,.92); border:1px solid var(--line); border-radius:999px; padding:4px 8px }
+  .ad img{ width:100%; aspect-ratio:16/9; height:auto; object-fit:cover; display:block }
+  .ad .inner{ padding:12px }
+  .ad h3{ margin:.25rem 0 .35rem; font-size:16px }
+  .ad p{ margin:0 0 .6rem; font-size:13px; color:var(--muted) }
+  .btns{ display:flex; gap:8px; flex-wrap:wrap }
+  .btn-sm{ display:inline-block; padding:8px 12px; border-radius:999px; background:var(--brand); color:#fff; text-decoration:none; font-weight:700; font-size:13px }
+  .btn-sm:hover{ background:var(--brand-2) }
 
-  details summary{cursor:pointer;font-weight:600}
-  footer{margin:24px 0 20px;text-align:center;color:var(--muted);font-size:12px}
+  details summary{ cursor:pointer; font-weight:600 }
+  footer{ margin:24px 0 20px; text-align:center; color:var(--muted); font-size:12px }
 </style>
 </head>
 <body>
 
   <!-- HERO -->
   <div class="hero-wrap">
+    <img class="hero-bg"
+         data-srcs="/img/hero.jpg|https://images.unsplash.com/photo-1519583194965-de5f6c1f5a49?auto=format&fit=crop&w=2000&q=80|https://placehold.co/1600x600?text=Taxi+Zagreb"
+         alt="Pozadinska fotografija – taxi">
     <div class="wrap hero">
       <h1>Taxi Zagreb — City & Airport</h1>
       <p class="tag">Poziv/WhatsApp 0–24 • Pre-book • Veća prtljaga • Minivan/Minibus (po upitu) • Račun na firmu</p>
@@ -88,7 +81,7 @@
 
   <main class="wrap">
 
-    <!-- USLUGE + ZAŠTO NAS ZVATI -->
+    <!-- USLUGE + ZAŠTO -->
     <section class="section">
       <div class="grid">
         <article class="card">
@@ -120,14 +113,11 @@
     <!-- TAXI 1–4 -->
     <section class="section">
       <div class="ads">
-        <!-- Taxi 1 — Corolla (partner) -->
+        <!-- Taxi 1 -->
         <article class="ad">
           <span class="taglabel">Taxi 1</span>
-          <img
-            src="https://images.unsplash.com/photo-1619767886558-efdc259cde1a?auto=format&fit=crop&w=1600&q=80"
-            alt="Taxi 1 — Toyota Corolla ili slična"
-            loading="lazy" referrerpolicy="no-referrer"
-            onerror="this.onerror=null;this.src='https://placehold.co/800x450?text=Taxi+1';">
+          <img alt="Taxi 1 — Toyota Corolla ili slična"
+               data-srcs="/img/taxi1.jpg|https://images.unsplash.com/photo-1619767886558-efdc259cde1a?auto=format&fit=crop&w=1600&q=80|https://placehold.co/800x450?text=Taxi+1">
           <div class="inner">
             <h3>Tvoj partner — vaš vozač</h3>
             <p>City i Airport vožnje. Dogovor prije vožnje.</p>
@@ -138,14 +128,11 @@
           </div>
         </article>
 
-        <!-- Taxi 2 — sedan -->
+        <!-- Taxi 2 -->
         <article class="ad">
           <span class="taglabel">Taxi 2</span>
-          <img
-            src="https://images.unsplash.com/photo-1571601035754-5c927f2d7ed1?auto=format&fit=crop&w=1600&q=80"
-            alt="Taxi 2 — sedan gradska vožnja"
-            loading="lazy" referrerpolicy="no-referrer"
-            onerror="this.onerror=null;this.src='https://placehold.co/800x450?text=Taxi+2';">
+          <img alt="Taxi 2 — sedan gradska vožnja"
+               data-srcs="/img/taxi2.jpg|https://images.unsplash.com/photo-1571601035754-5c927f2d7ed1?auto=format&fit=crop&w=1600&q=80|https://placehold.co/800x450?text=Taxi+2">
           <div class="inner">
             <h3>City taxi</h3>
             <p>Brzi dolazak, gradske vožnje.</p>
@@ -155,14 +142,11 @@
           </div>
         </article>
 
-        <!-- Taxi 3 — minivan -->
+        <!-- Taxi 3 -->
         <article class="ad">
           <span class="taglabel">Taxi 3</span>
-          <img
-            src="https://images.unsplash.com/photo-1617469767053-3f1a5f4b3b0e?auto=format&fit=crop&w=1600&q=80"
-            alt="Taxi 3 — minivan / kombi"
-            loading="lazy" referrerpolicy="no-referrer"
-            onerror="this.onerror=null;this.src='https://placehold.co/800x450?text=Taxi+3';">
+          <img alt="Taxi 3 — minivan / kombi"
+               data-srcs="/img/taxi3.jpg|https://images.unsplash.com/photo-1617469767053-3f1a5f4b3b0e?auto=format&fit=crop&w=1600&q=80|https://placehold.co/800x450?text=Taxi+3">
           <div class="inner">
             <h3>Van / Minibus</h3>
             <p>Grupe, mnogo prtljage — po upitu.</p>
@@ -172,14 +156,11 @@
           </div>
         </article>
 
-        <!-- Taxi 4 — business sedan -->
+        <!-- Taxi 4 -->
         <article class="ad">
           <span class="taglabel">Taxi 4</span>
-          <img
-            src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=1600&q=80"
-            alt="Taxi 4 — business / events"
-            loading="lazy" referrerpolicy="no-referrer"
-            onerror="this.onerror=null;this.src='https://placehold.co/800x450?text=Taxi+4';">
+          <img alt="Taxi 4 — business / events"
+               data-srcs="/img/taxi4.jpg|https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=1600&q=80|https://placehold.co/800x450?text=Taxi+4">
           <div class="inner">
             <h3>Business / events</h3>
             <p>Čekanje po satu, poslovne vožnje — po dogovoru.</p>
@@ -204,18 +185,24 @@
     <footer>© taxi-zagreb-croatia.com • Pre-book & transparent pricing</footer>
   </main>
 
-  <!-- WhatsApp + Tel builder: PROMIJENI BROJEVE OVDJE -->
+  <!-- Tel/WA konfiguracija – promijeni brojeve -->
   <script>
-  // glavni kontakt
   const TEL_PHONE   = "+385 97 762 0385";
   const WA_PHONE    = "+385 97 762 0385";
-  // Taxi 1 (partner) – ako je drugi broj, promijeni ovdje
   const FRIEND_TEL  = "+385 97 762 0385";
   const FRIEND_WA   = "+385 97 762 0385";
-
   const WA_TEXT = "Pozdrav! Javljam se preko taxi-zagreb-croatia.com.\nPolazak:\nOdredište:\nVrijeme:";
 
   (function(){
+    // helper: postavi src s fallbackom (lista odvojenih | )
+    function setSrcWithFallback(img){
+      const list = (img.getAttribute('data-srcs')||'').split('|').filter(Boolean);
+      let i = 0;
+      img.onerror = () => { i++; if(i < list.length){ img.src = list[i]; } };
+      if(list.length){ img.src = list[0]; }
+    }
+    document.querySelectorAll('img[data-srcs]').forEach(setSrcWithFallback);
+
     const tel = n => "tel:" + String(n).replace(/\s+/g,'');
     const wa  = n => "https://api.whatsapp.com/send?phone=" + String(n).replace(/\D/g,'') + "&text=" + encodeURIComponent(WA_TEXT);
 
@@ -231,21 +218,6 @@
     if(callFr) callFr.href = tel(FRIEND_TEL);
     if(waFr)   waFr.href   = wa(FRIEND_WA);
   })();
-  </script>
-
-  <!-- Sigurnosni fallback za sve slike (nikad prazno) -->
-  <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('img').forEach(img => {
-      if (!img.getAttribute('onerror')) {
-        img.setAttribute('onerror',
-          "this.onerror=null;this.src='https://placehold.co/800x450?text=Taxi';"
-        );
-      }
-      img.loading = 'lazy';
-      img.referrerPolicy = 'no-referrer';
-    });
-  });
   </script>
 </body>
 </html>
