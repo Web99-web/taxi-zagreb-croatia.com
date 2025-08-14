@@ -6,6 +6,7 @@
 <title>Taxi Zagreb – City & Airport | taxi-zagreb-croatia.com</title>
 <meta name="description" content="Taxi Zagreb: pre-book, zračna luka, veća prtljaga, minivan/minibus po upitu, račun na firmu. Poziv i WhatsApp 0–24." />
 <link rel="canonical" href="https://taxi-zagreb-croatia.com/">
+
 <meta property="og:type" content="website">
 <meta property="og:title" content="Taxi Zagreb – City & Airport">
 <meta property="og:description" content="Pre-book • Zračna luka • Veća prtljaga • Račun na firmu">
@@ -17,8 +18,7 @@
     --brand:#0ea5e9; --brand-2:#1276a7;
     --ink:#0b1a24; --muted:#5b6b7a;
     --line:#e8eef5; --chip:#f4f8fb; --card:#fff;
-    /* JS postavlja ovu varijablu na pravi URL */
-    --bg-img:url('https://placehold.co/2400x1600?text=Zagreb');
+    --bg-img:url('https://images.pexels.com/photos/210019/pexels-photo-210019.jpeg?auto=compress&cs=tinysrgb&w=2400'); /* cesta + auto */
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
@@ -27,7 +27,7 @@
     font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
     min-height:100vh; position:relative;
   }
-  /* CJELOSTRANIČNA POZADINA + lagani bijeli overlay radi čitljivosti */
+  /* cijelostranična pozadina + lagani overlay radi čitljivosti */
   body::before{
     content:""; position:fixed; inset:0; z-index:-2;
     background-image:var(--bg-img);
@@ -36,7 +36,7 @@
   }
   body::after{
     content:""; position:fixed; inset:0; z-index:-1;
-    background:linear-gradient(180deg,rgba(255,255,255,.80),rgba(255,255,255,.90));
+    background:linear-gradient(180deg,rgba(255,255,255,.76),rgba(255,255,255,.88));
   }
 
   .wrap{max-width:1100px;margin:0 auto;padding:28px 18px}
@@ -115,13 +115,12 @@
     <section class="section">
       <div class="ads">
 
-        <!-- Taxi 1 -->
+        <!-- Taxi 1 – BMW sedan -->
         <article class="ad">
           <span class="taglabel">Taxi 1</span>
-          <img alt="Taxi 1 — sedan / Toyota / Ford"
-               data-srcs="/img/taxi1.jpg
-                          | https://images.pexels.com/photos/358070/pexels-photo-358070.jpeg?auto=compress&cs=tinysrgb&w=1600
-                          | https://cdn.pixabay.com/photo/2015/01/19/13/51/car-604019_1280.jpg
+          <img alt="Taxi 1 — BMW sedan"
+               data-srcs="https://images.pexels.com/photos/100656/pexels-photo-100656.jpeg?auto=compress&cs=tinysrgb&w=1600
+                          | https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg?auto=compress&cs=tinysrgb&w=1600
                           | https://placehold.co/800x450?text=Taxi+1">
           <div class="inner">
             <h3>Tvoj partner — vaš vozač</h3>
@@ -133,13 +132,12 @@
           </div>
         </article>
 
-        <!-- Taxi 2 -->
+        <!-- Taxi 2 – Mercedes hatchback -->
         <article class="ad">
           <span class="taglabel">Taxi 2</span>
-          <img alt="Taxi 2 — gradski sedan"
-               data-srcs="/img/taxi2.jpg
-                          | https://images.pexels.com/photos/112460/pexels-photo-112460.jpeg?auto=compress&cs=tinysrgb&w=1600
-                          | https://cdn.pixabay.com/photo/2016/05/01/20/39/car-1367939_1280.jpg
+          <img alt="Taxi 2 — Mercedes hatchback"
+               data-srcs="https://images.pexels.com/photos/31292722/pexels-photo-31292722.jpeg?auto=compress&cs=tinysrgb&w=1600
+                          | https://images.pexels.com/photos/20475010/pexels-photo-20475010.jpeg?auto=compress&cs=tinysrgb&w=1600
                           | https://placehold.co/800x450?text=Taxi+2">
           <div class="inner">
             <h3>City taxi</h3>
@@ -150,12 +148,11 @@
           </div>
         </article>
 
-        <!-- Taxi 3 -->
+        <!-- Taxi 3 – Mercedes V-Class (minivan) -->
         <article class="ad">
           <span class="taglabel">Taxi 3</span>
-          <img alt="Taxi 3 — minivan / kombi"
-               data-srcs="/img/taxi3.jpg
-                          | https://cdn.pixabay.com/photo/2017/01/06/19/15/van-1955673_1280.jpg
+          <img alt="Taxi 3 — Van / Minibus (Mercedes V-Class)"
+               data-srcs="https://images.pexels.com/photos/17455633/pexels-photo-17455633.jpeg?auto=compress&cs=tinysrgb&w=1600
                           | https://images.pexels.com/photos/771881/pexels-photo-771881.jpeg?auto=compress&cs=tinysrgb&w=1600
                           | https://placehold.co/800x450?text=Taxi+3">
           <div class="inner">
@@ -167,13 +164,12 @@
           </div>
         </article>
 
-        <!-- Taxi 4 -->
+        <!-- Taxi 4 – Mercedes S-Class (business) -->
         <article class="ad">
           <span class="taglabel">Taxi 4</span>
-          <img alt="Taxi 4 — business sedan (Mercedes/Audi)"
-               data-srcs="/img/taxi4.jpg
+          <img alt="Taxi 4 — Mercedes S-Class"
+               data-srcs="https://images.pexels.com/photos/26691312/pexels-photo-26691312.jpeg?auto=compress&cs=tinysrgb&w=1600
                           | https://images.pexels.com/photos/1402787/pexels-photo-1402787.jpeg?auto=compress&cs=tinysrgb&w=1600
-                          | https://cdn.pixabay.com/photo/2016/01/19/17/56/mercedes-benz-1154994_1280.jpg
                           | https://placehold.co/800x450?text=Taxi+4">
           <div class="inner">
             <h3>Business / events</h3>
@@ -200,9 +196,9 @@
     <footer>© taxi-zagreb-croatia.com • Pre-book & transparent pricing</footer>
   </main>
 
-  <!-- Tel/WA + slika pozadine s fallbackom -->
+  <!-- Tel/WA + loader za slike s fallbackom -->
   <script>
-  // ——— Brojevi (promijeni po potrebi)
+  // Telefoni
   const TEL_PHONE   = "+385 97 762 0385";
   const WA_PHONE    = "+385 97 762 0385";
   const FRIEND_TEL  = "+385 97 762 0385";
@@ -223,37 +219,17 @@
     if(waFr)   waFr.href   = wa(FRIEND_WA);
   })();
 
-  // helper: prođi listu src-ova dok ne uspije (za IMG elemente)
+  // helper: prođi listu src-ova dok ne uspije (za IMG elemente s data-srcs)
   function setSrcWithFallback(img){
     const list = (img.getAttribute('data-srcs')||'').split('|').map(s=>s.trim()).filter(Boolean);
     if(!list.length) return;
     let i = 0;
     img.onerror = () => { i++; if(i < list.length){ img.src = list[i]; } };
     img.src = list[0];
+    img.loading = 'lazy';
+    img.referrerPolicy = 'no-referrer';
   }
-  // za sve slike u karticama
   document.querySelectorAll('img[data-srcs]').forEach(setSrcWithFallback);
-
-  // POZADINA ZA CIJELU STRANICU – probaj lokalnu pa 2 javne pa placeholder
-  (function(){
-    const bgList = [
-      '/img/bg.jpg',
-      'https://images.pexels.com/photos/139491/pexels-photo-139491.jpeg?auto=compress&cs=tinysrgb&w=2400', // europska gradska ulica (neutralno)
-      'https://cdn.pixabay.com/photo/2018/03/01/10/31/croatia-3185071_1280.jpg', // Zagreb (katedrala/centar)
-      'https://placehold.co/2400x1600?text=Zagreb'
-    ];
-    let i = 0;
-    const tester = new Image();
-    tester.onload = () => {
-      document.body.style.setProperty('--bg-img', `url('${bgList[i]}')`);
-    };
-    tester.onerror = () => {
-      i++;
-      if(i < bgList.length) tester.src = bgList[i];
-      else document.body.style.setProperty('--bg-img', `url('${bgList.at(-1)}')`);
-    };
-    tester.src = bgList[i];
-  })();
   </script>
 </body>
 </html>
