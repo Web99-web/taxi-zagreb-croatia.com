@@ -88,9 +88,12 @@
       <p class="tag">Poziv/WhatsApp 0–24 • Pre-book • Veća prtljaga • Minivan/Minibus (po upitu) • Račun na firmu</p>
       <div class="ctas">
         <a class="cta" id="call-top" href="#">Nazovi</a>
-        <!-- zasad koristimo placeholder Bitly; zamijeni svojim kad ga napraviš -->
-        <a class="cta" id="wa-top" href="https://bit.ly/taxi-zg-whatsapp" target="_blank" rel="noopener">WhatsApp</a>
-        <a class="cta" href="mailto:info@taxi-zagreb-croatia.com?bcc=zagrebrental2000@gmail.com&subject=Upit%20s%20taxi-zagreb-croatia.com">Email</a>
+        <a class="cta" data-wa href="#">WhatsApp</a>
+        <!-- Email ne prikazuje adresu; generira se iz data-atributa -->
+        <a class="cta" data-mail data-user="toni.y.hrncic" data-domain="gmail.com"
+           data-subject="Upit s taxi-zagreb-croatia.com" data-bcc="zagrebrental2000@gmail.com">
+           Email (Taxi1 Zagreb)
+        </a>
       </div>
     </header>
 
@@ -137,7 +140,7 @@
             <p>City i Airport vožnje. Dogovor prije vožnje.</p>
             <div class="btns">
               <a class="btn-sm" id="call-friend" href="#">Nazovi</a>
-              <a class="btn-sm" id="wa-friend" href="https://bit.ly/taxi-zg-whatsapp" target="_blank" rel="noopener">WhatsApp</a>
+              <a class="btn-sm" data-wa href="#">WhatsApp</a>
             </div>
           </div>
         </article>
@@ -213,17 +216,33 @@
 
   <!-- SVE u jednom <script> bloku -->
   <script>
-  // 1) TELEFON & (placeholder) BITLY WHATSAPP
-  const TEL_PHONE  = "+385 97 762 0385";                 // direktan poziv
-  const BITLY_WA   = "https://bit.ly/taxi-zg-whatsapp";  // zamijeni svojim kad ga kreiraš
+  // 0) KONFIG
+  const TEL_PHONE = "+385 97 762 0385";
+  const WA_LINK   = "https://bit.ly/taxi1-zg";   // tvoj Bitly link (mijenjaš na jednom mjestu)
 
+  // 1) TEL & WHATSAPP & EMAIL (obfuscation)
   (function(){
     const tel = n => "tel:" + String(n).replace(/\s+/g,'');
     const callTop = document.getElementById('call-top');
     const callFr  = document.getElementById('call-friend');
     if(callTop) callTop.href = tel(TEL_PHONE);
     if(callFr)  callFr.href  = tel(TEL_PHONE);
-    // WhatsApp linkovi su u HTML-u i idu na BITLY_WA
+
+    document.querySelectorAll('a[data-wa]').forEach(a => a.href = WA_LINK);
+
+    // Email obfuscation – ne prikazujemo adresu, gradimo je iz data-atributa
+    document.querySelectorAll('[data-mail]').forEach(a=>{
+      const u = a.getAttribute('data-user')||'';
+      const d = a.getAttribute('data-domain')||'';
+      const subject = encodeURIComponent(a.getAttribute('data-subject')||'');
+      const bcc     = encodeURIComponent(a.getAttribute('data-bcc')||'');
+      let href = `mailto:${u}@${d}`;
+      const params = [];
+      if(subject) params.push(`subject=${subject}`);
+      if(bcc)     params.push(`bcc=${bcc}`);
+      if(params.length) href += `?${params.join('&')}`;
+      a.href = href;
+    });
   })();
 
   // 2) LAZY / FALLBACK IMG: prođi data-srcs listu dok ne uspije
