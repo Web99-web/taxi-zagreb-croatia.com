@@ -88,7 +88,7 @@
       <p class="tag">Poziv/WhatsApp 0–24 • Pre-book • Veća prtljaga • Minivan/Minibus (po upitu) • Račun na firmu</p>
       <div class="ctas">
         <a class="cta" id="call-top" href="#">Nazovi</a>
-        <!-- Bitly link bilježi klikove -->
+        <!-- zasad koristimo placeholder Bitly; zamijeni svojim kad ga napraviš -->
         <a class="cta" id="wa-top" href="https://bit.ly/taxi-zg-whatsapp" target="_blank" rel="noopener">WhatsApp</a>
         <a class="cta" href="mailto:info@taxi-zagreb-croatia.com?bcc=zagrebrental2000@gmail.com&subject=Upit%20s%20taxi-zagreb-croatia.com">Email</a>
       </div>
@@ -211,11 +211,11 @@
     <div class="badge" id="counter-local">Tvoj brojač: —</div>
   </div>
 
-  <!-- Tel/WA + loader za slike i brojače -->
+  <!-- SVE u jednom <script> bloku -->
   <script>
-  // 1) TELEFON & BITLY WHATSAPP
-  const TEL_PHONE  = "+385 97 762 0385";                        // direktan poziv (ne broji Bitly)
-  const BITLY_WA   = "https://bit.ly/taxi-zg-whatsapp";         // Bitly link -> on broji klikove
+  // 1) TELEFON & (placeholder) BITLY WHATSAPP
+  const TEL_PHONE  = "+385 97 762 0385";                 // direktan poziv
+  const BITLY_WA   = "https://bit.ly/taxi-zg-whatsapp";  // zamijeni svojim kad ga kreiraš
 
   (function(){
     const tel = n => "tel:" + String(n).replace(/\s+/g,'');
@@ -223,7 +223,7 @@
     const callFr  = document.getElementById('call-friend');
     if(callTop) callTop.href = tel(TEL_PHONE);
     if(callFr)  callFr.href  = tel(TEL_PHONE);
-    // WhatsApp linkovi su već postavljeni direktno na BITLY_WA u HTML-u
+    // WhatsApp linkovi su u HTML-u i idu na BITLY_WA
   })();
 
   // 2) LAZY / FALLBACK IMG: prođi data-srcs listu dok ne uspije
@@ -238,23 +238,17 @@
   }
   document.querySelectorAll('img[data-srcs]').forEach(setSrcWithFallback);
 
-  <script>
   // 3) BROJAČI (global + lokal) s fallbackom
   (function(){
     const globalEl = document.getElementById('counter-global');
     const localEl  = document.getElementById('counter-local');
-
-    // ---------- GLOBALNI: 1) CountAPI -> 2) SeeYouFarm fallback ----------
     const MIN_BASE = 10000;
-
-    function fmt(n){ try { return n.toLocaleString('hr-HR'); } catch(e){ return String(n); } }
+    const fmt = n => { try { return n.toLocaleString('hr-HR'); } catch(e){ return String(n); } };
 
     async function tryCountAPI() {
       const NS  = 'taxi-multi';
       const KEY = (location.hostname || 'local') + '-visits';
       const api = (p)=>`https://api.countapi.xyz/${p}`;
-
-      // ensure >= 10000 then hit
       let res = await fetch(api(`get/${NS}/${KEY}`), {cache:'no-store'});
       if(res.status === 404){
         await fetch(api(`create?namespace=${NS}&key=${KEY}&value=${MIN_BASE}`));
@@ -273,13 +267,10 @@
     }
 
     async function trySeeYouFarmFallback(){
-      // SeeYouFarm broji po URL-u; ne može zadati početnu,
-      // pa prikazujemo MIN_BASE + count
       const urlKey = encodeURIComponent(location.origin + location.pathname);
       const svgUrl = `https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=${urlKey}`;
       const res = await fetch(svgUrl, {cache:'no-store'});
       const svg = await res.text();
-      // U badge SVG-u posljednji <text> je broj; grubi regex:
       const m = svg.match(/>(\d+)<\/text>\s*<\/g>\s*<\/svg>$/) || svg.match(/>(\d+)</);
       const raw = m ? parseInt(m[1],10) : NaN;
       const total = isNaN(raw) ? null : (MIN_BASE + raw);
@@ -289,22 +280,18 @@
     (async ()=>{
       let ok = false;
       try {
-        // pokuša CountAPI s vremenom čekanja ~1.5 s
         const p = tryCountAPI();
         const timeout = new Promise((_,rej)=>setTimeout(()=>rej(new Error('timeout')),1500));
         await Promise.race([p, timeout]);
         ok = true;
-      } catch(e) {
-        ok = false;
-      }
+      } catch(e) { ok = false; }
       if(!ok){
-        // fallback
         try{ await trySeeYouFarmFallback(); }
         catch(e){ if(globalEl) globalEl.textContent = 'Posjeta (ukupno): n/a'; }
       }
     })();
 
-    // ---------- LOKALNI (localStorage) ----------
+    // LOKALNI (localStorage)
     const LSKEY = 'taxi_local_counter';
     try{
       let v = parseInt(localStorage.getItem(LSKEY)||'10000',10);
@@ -316,7 +303,6 @@
       if(localEl) localEl.textContent = `Tvoj brojač: n/a`;
     }
   })();
-</script>
-
+  </script>
 </body>
 </html>
