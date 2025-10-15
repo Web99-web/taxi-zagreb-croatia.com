@@ -187,23 +187,39 @@
   </main>
 
   <!-- Telefoni/WhatsApp/Email i slike – možeš kopirati isti <script> iz EN index.html -->
-  <script>
-    const TEL_PHONE = "+385 97 762 0385";
-    const WA_LINK   = "https://bit.ly/taxi1-zg";
-    (function(){
-      const tel=n=>"tel:"+String(n).replace(/\s+/g,'');
-      const callTop=document.getElementById('call-top');
-      if(callTop) callTop.href=tel(TEL_PHONE);
-      document.querySelectorAll('a[data-wa]').forEach(a=>a.href=WA_LINK);
-      document.querySelectorAll('[data-mail]').forEach(a=>{
-        const u=a.getAttribute('data-user')||'', d=a.getAttribute('data-domain')||'';
-        const subject=encodeURIComponent(a.getAttribute('data-subject')||'');
-        const bcc=encodeURIComponent(a.getAttribute('data-bcc')||'');
-        let href=`mailto:${u}@${d}`; const p=[];
-        if(subject) p.push(`subject=${subject}`); if(bcc) p.push(`bcc=${bcc}`);
-        if(p.length) href+=`?${p.join('&')}`; a.href=href;
-      });
-    })();
-  </script>
+<script>
+  const TEL_PHONE = "+385 97 762 0385";
+  const WA_LINK   = "https://bit.ly/taxi1-zg";
+
+  // Tel / WhatsApp / Email
+  (function(){
+    const tel = n => "tel:" + String(n).replace(/\s+/g,'');
+    const callTop = document.getElementById('call-top');
+    const callFr  = document.getElementById('call-friend'); // <-- dodano
+    if (callTop) callTop.href = tel(TEL_PHONE);
+    if (callFr)  callFr.href  = tel(TEL_PHONE);             // <-- dodano
+    document.querySelectorAll('a[data-wa]').forEach(a => a.href = WA_LINK);
+    document.querySelectorAll('[data-mail]').forEach(a=>{
+      const u=a.getAttribute('data-user')||'', d=a.getAttribute('data-domain')||'';
+      const subject=encodeURIComponent(a.getAttribute('data-subject')||'');
+      const bcc=encodeURIComponent(a.getAttribute('data-bcc')||'');
+      let href=`mailto:${u}@${d}`; const p=[];
+      if(subject) p.push(`subject=${subject}`); if(bcc) p.push(`bcc=${bcc}`);
+      if(p.length) href+=`?${p.join('&')}`; a.href=href;
+    });
+  })();
+
+  // Slike s fallbackom (obavezno za "auti" kartice)
+  function setSrcWithFallback(img){
+    const list=(img.getAttribute('data-srcs')||'').split('|').map(s=>s.trim()).filter(Boolean);
+    if(!list.length) return; let i=0;
+    img.onerror=()=>{ i++; if(i<list.length){ img.src=list[i]; } };
+    img.src=list[0];
+    img.loading='lazy';
+    img.referrerPolicy='no-referrer';
+  }
+  document.querySelectorAll('img[data-srcs]').forEach(setSrcWithFallback);
+</script>
+
 </body>
 </html>
