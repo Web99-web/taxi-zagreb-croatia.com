@@ -60,8 +60,7 @@ A few minutes’ walk from the Old Town ridge, the city opens into grand 19th-ce
 *Find flights, hotels, and tours for Zagreb & Croatia:*
 
 <!-- AADS: paste your ad code below -->
-<div class="ad ad-aads">
-  <!-- AADS_CODE_START -->
-  <!-- Your AADS script/snippet goes here -->
-  <!-- AADS_CODE_END -->
-</div>
+<div id="frame" style="width: 100%;margin: auto;position: relative; z-index: 99998;">
+          <iframe data-aa='2413812' src='//acceptable.a-ads.com/2413812/?size=Adaptive'
+                            style='border:0; padding:0; width:70%; height:auto; overflow:hidden;display: block;margin: auto'></iframe>
+        </div>
