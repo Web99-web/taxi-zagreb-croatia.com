@@ -62,6 +62,11 @@
   <span style="opacity:.5;margin:0 .45rem">|</span>
   <a href="/hr/blog/" style="text-decoration:none; font-weight:600; color:#0b1a24;">Blog (HR)</a>
 </nav>
+<nav style="position:fixed; top:56px; left:50%; transform:translateX(-50%); background:rgba(255,255,255,.92); border:1px solid #e8eef5; border-radius:999px; padding:6px 12px; z-index:999;">
+  <a href="/stories/" style="text-decoration:none; font-weight:600; color:#0b1a24;">Stories</a>
+  <span style="opacity:.5;margin:0 .45rem">|</span>
+  <a href="/hr/stories/" style="text-decoration:none; font-weight:600; color:#0b1a24;">Priče (HR)</a>
+</nav>
 
 </style>
 </head>
@@ -205,7 +210,13 @@
     const callFr  = document.getElementById('call-friend'); // <-- dodano
     if (callTop) callTop.href = tel(TEL_PHONE);
     if (callFr)  callFr.href  = tel(TEL_PHONE);             // <-- dodano
-    document.querySelectorAll('a[data-wa]').forEach(a => a.href = WA_LINK);
+    
+    document.querySelectorAll('a[data-wa]').forEach(a => {
+  a.href = WA_LINK;
+  a.target = '_blank';
+  a.rel = 'noopener';
+});
+
     document.querySelectorAll('[data-mail]').forEach(a=>{
       const u=a.getAttribute('data-user')||'', d=a.getAttribute('data-domain')||'';
       const subject=encodeURIComponent(a.getAttribute('data-subject')||'');
