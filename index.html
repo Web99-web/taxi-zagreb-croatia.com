@@ -219,7 +219,13 @@
     const callFr  = document.getElementById('call-friend');
     if(callTop) callTop.href = tel(TEL_PHONE);
     if(callFr)  callFr.href  = tel(TEL_PHONE);
-    document.querySelectorAll('a[data-wa]').forEach(a => a.href = WA_LINK);
+    
+    document.querySelectorAll('a[data-wa]').forEach(a => {
+  a.href = WA_LINK;
+  a.target = '_blank';
+  a.rel = 'noopener';
+});
+
     document.querySelectorAll('[data-mail]').forEach(a=>{
       const u=a.getAttribute('data-user')||'', d=a.getAttribute('data-domain')||'';
       const subject=encodeURIComponent(a.getAttribute('data-subject')||'');
