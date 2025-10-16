@@ -26,19 +26,28 @@
   body{ margin:0; color:var(--ink); font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; min-height:100vh; position:relative; }
   body::before{ content:""; position:fixed; inset:0; z-index:-2; background-image:var(--bg-img); background-size:cover; background-position:center; background-attachment:fixed; filter:saturate(1.05) contrast(1.04); }
   body::after{ content:""; position:fixed; inset:0; z-index:-1; background:linear-gradient(180deg,rgba(255,255,255,.76),rgba(255,255,255,.88)); }
+
   .wrap{max-width:1100px;margin:0 auto;padding:28px 18px}
   header h1{margin:0 0 .4rem;font-size:clamp(28px,6vw,46px)}
   .tag{margin:0;color:var(--muted)}
   .ctas{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0 4px}
   .cta{background:var(--brand);color:#fff;text-decoration:none;font-weight:700;border-radius:999px;padding:10px 16px;display:inline-block}
   .cta:hover{background:var(--brand-2)}
+
+  /* jezični preklopnik gore desno */
+  .langswitch{
+    position:fixed;top:12px;right:16px;z-index:1000;
+    font-weight:600;background:rgba(255,255,255,.9);
+    border:1px solid var(--line);border-radius:999px;padding:6px 10px
+  }
+  .langswitch a{color:#0b1a24;text-decoration:none}
+  .langswitch .sep{opacity:.5;margin:0 .4rem}
+
   .section{padding:22px 0}
-  .grid{display:grid;gap:14px;grid-template-columns:1fr}
-  @media(min-width:900px){.grid{grid-template-columns:1.5fr .9fr}}
   .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:0 6px 20px rgba(16,24,40,.05)}
-  .chips{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-  .chip{background:var(--chip);border:1px solid var(--line);border-radius:12px;padding:10px;text-align:center;font-weight:600}
   .muted{color:var(--muted);font-size:13px}
+
+  /* Taxi kartice */
   .ads{display:grid;gap:14px;grid-template-columns:1fr;margin-top:16px}
   @media(min-width:900px){.ads{grid-template-columns:repeat(4,1fr)}}
   .ad{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;position:relative;box-shadow:0 6px 20px rgba(16,24,40,.05)}
@@ -50,16 +59,23 @@
   .btns{display:flex;gap:8px;flex-wrap:wrap}
   .btn-sm{display:inline-block;padding:8px 12px;border-radius:999px;background:var(--brand);color:#fff;text-decoration:none;font-weight:700;font-size:13px}
   .btn-sm:hover{background:var(--brand-2)}
+
+  /* Rešetka priča */
+  .stories-grid{display:grid;gap:14px;grid-template-columns:1fr}
+  @media(min-width:700px){.stories-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(min-width:1000px){.stories-grid{grid-template-columns:repeat(3,1fr)}}
+  .story-card{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 6px 20px rgba(16,24,40,.05)}
+  .story-card img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}
+  .story-card .inner{padding:12px}
+  .story-card h3{margin:.25rem 0 .35rem;font-size:16px}
+  .story-card p{margin:0;color:var(--muted);font-size:13px}
+  .center{display:flex;justify-content:center;margin-top:12px}
+
   footer{margin:24px 0 20px;text-align:center;color:var(--muted);font-size:12px}
-  /* jezični preklopnik – centriran gore */
-  .langswitch{
-    position:fixed; top:12px; left:50%; transform:translateX(-50%);
-    z-index:1000; font-weight:600; background:rgba(255,255,255,.92);
-    border:1px solid var(--line); box-shadow:0 6px 18px rgba(0,0,0,.08);
-    border-radius:999px; padding:6px 12px;
-  }
-  .langswitch a{color:#0b1a24;text-decoration:none}
-  .langswitch .sep{opacity:.5;margin:0 .45rem}
+
+  /* brojači */
+  #counters{ position:fixed; right:10px; bottom:10px; z-index:99; display:flex; flex-direction:column; gap:6px; }
+  .badge{ background:rgba(255,255,255,.92); color:#0b1a24; border:1px solid var(--line); border-radius:999px; padding:6px 10px; font-size:11px; box-shadow:0 6px 18px rgba(0,0,0,.12); }
 </style>
 </head>
 <body>
@@ -77,38 +93,10 @@
            data-subject="Upit s taxi-zagreb-croatia.com" data-bcc="zagrebrental2000@gmail.com">
            Email (Taxi Zagreb)
         </a>
-        <!-- NOVI HR gumb -->
-        <a class="cta" href="/hr/stories/">Što vidjeti i posjetiti u Zagrebu</a>
       </div>
     </header>
 
-    <section class="section">
-      <div class="grid">
-        <article class="card">
-          <h2>Usluge</h2>
-          <div class="chips">
-            <div class="chip">City taxi</div>
-            <div class="chip">Zračna luka</div>
-            <div class="chip">Pre-book</div>
-            <div class="chip">Veća prtljaga</div>
-            <div class="chip">Minivan/Minibus (po upitu)</div>
-            <div class="chip">Račun na firmu</div>
-          </div>
-          <p class="muted" style="margin-top:10px">Cijena prema taksimetru ili dogovoru prije vožnje.</p>
-        </article>
-        <aside class="card">
-          <h2>Zašto nas zvati?</h2>
-          <ul style="margin:0 0 10px 18px; line-height:1.55">
-            <li>Pre-book (npr. rano ujutro / kasno navečer)</li>
-            <li>Transparentno — taksimetar ili dogovor prije vožnje</li>
-            <li>Veća prtljaga, minivan/minibus po upitu</li>
-            <li>Račun na firmu, WhatsApp komunikacija</li>
-          </ul>
-          <p class="muted">Dječja sjedalica nije standardno — moguće po upitu i dostupnosti.</p>
-        </aside>
-      </div>
-    </section>
-
+    <!-- 1) TAXI KARTICE PRVE -->
     <section class="section">
       <div class="ads">
         <article class="ad">
@@ -174,7 +162,98 @@
       </div>
     </section>
 
-    <!-- A-ADS blok -->
+    <!-- 2) PRIČE DRUGE -->
+    <section class="section">
+      <div class="card">
+        <h2>Što vidjeti u Zagrebu</h2>
+
+        <div class="stories-grid">
+          <article class="story-card">
+            <a href="/hr/stories/gornji-grad/">
+              <img alt="Zagreb Gornji grad"
+                   data-srcs="https://images.pexels.com/photos/466685/pexels-photo-466685.jpeg?auto=compress&cs=tinysrgb&w=1600
+                              | https://images.pexels.com/photos/169647/pexels-photo-169647.jpeg?auto=compress&cs=tinysrgb&w=1600
+                              | https://placehold.co/800x450?text=Zagreb">
+            </a>
+            <div class="inner">
+              <h3><a href="/hr/stories/gornji-grad/" style="color:inherit;text-decoration:none">Zagreb Gornji grad</a></h3>
+              <p>Crkva sv. Marka, uspinjača, vidikovci — savršena kratka šetnja.</p>
+            </div>
+          </article>
+
+          <article class="story-card">
+            <a href="/hr/stories/trg-bana-jelacica/">
+              <img alt="Trg bana Jelačića"
+                   data-srcs="https://images.pexels.com/photos/164631/pexels-photo-164631.jpeg?auto=compress&cs=tinysrgb&w=1600
+                              | https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg?auto=compress&cs=tinysrgb&w=1600
+                              | https://placehold.co/800x450?text=Trg+ban+Jela%C4%8Di%C4%87a">
+            </a>
+            <div class="inner">
+              <h3><a href="/hr/stories/trg-bana-jelacica/" style="color:inherit;text-decoration:none">Trg bana Jelačića</a></h3>
+              <p>Središte grada — tramvaji, kafići, Dolac odmah pokraj.</p>
+            </div>
+          </article>
+
+          <article class="story-card">
+            <a href="/hr/stories/maksimir-park-zoo/">
+              <img alt="Maksimir park"
+                   data-srcs="https://images.pexels.com/photos/305236/pexels-photo-305236.jpeg?auto=compress&cs=tinysrgb&w=1600
+                              | https://images.pexels.com/photos/147411/pexels-photo-147411.jpeg?auto=compress&cs=tinysrgb&w=1600
+                              | https://placehold.co/800x450?text=Maksimir">
+            </a>
+            <div class="inner">
+              <h3><a href="/hr/stories/maksimir-park-zoo/" style="color:inherit;text-decoration:none">Maksimir park i Zoo</a></h3>
+              <p>Zelena oaza blizu centra — jezera, šuma, za cijelu obitelj.</p>
+            </div>
+          </article>
+
+          <article class="story-card">
+            <a href="/hr/stories/muzej-prekinutih-veza/">
+              <img alt="Muzej prekinutih veza"
+                   data-srcs="https://images.pexels.com/photos/242246/pexels-photo-242246.jpeg?auto=compress&cs=tinysrgb&w=1600
+                              | https://images.pexels.com/photos/1402787/pexels-photo-1402787.jpeg?auto=compress&cs=tinysrgb&w=1600
+                              | https://placehold.co/800x450?text=Muzej">
+            </a>
+            <div class="inner">
+              <h3><a href="/hr/stories/muzej-prekinutih-veza/" style="color:inherit;text-decoration:none">Muzej prekinutih veza</a></h3>
+              <p>Originalna i emotivna zbirka — zagrebački zaštitni znak.</p>
+            </div>
+          </article>
+
+          <article class="story-card">
+            <a href="/hr/stories/sljeme-medvednica/">
+              <img alt="Sljeme / Medvednica"
+                   data-srcs="https://images.pexels.com/photos/210186/pexels-photo-210186.jpeg?auto=compress&cs=tinysrgb&w=1600
+                              | https://images.pexels.com/photos/371589/pexels-photo-371589.jpeg?auto=compress&cs=tinysrgb&w=1600
+                              | https://placehold.co/800x450?text=Medvednica">
+            </a>
+            <div class="inner">
+              <h3><a href="/hr/stories/sljeme-medvednica/" style="color:inherit;text-decoration:none">Sljeme / Medvednica</a></h3>
+              <p>Kratke šetnje, planinarski domovi, vidikovci — lagan poludnevni izlet.</p>
+            </div>
+          </article>
+
+          <article class="story-card">
+            <a href="/hr/stories/dolac/">
+              <img alt="Tržnica Dolac"
+                   data-srcs="https://images.pexels.com/photos/267389/pexels-photo-267389.jpeg?auto=compress&cs=tinysrgb&w=1600
+                              | https://images.pexels.com/photos/3756528/pexels-photo-3756528.jpeg?auto=compress&cs=tinysrgb&w=1600
+                              | https://placehold.co/800x450?text=Dolac">
+            </a>
+            <div class="inner">
+              <h3><a href="/hr/stories/dolac/" style="color:inherit;text-decoration:none">Tržnica Dolac</a></h3>
+              <p>Svježe namirnice i lokalni štih — najbolje ujutro.</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="center">
+          <a class="cta" href="/hr/stories/">Pogledaj sve priče</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3) PONUDE PARTNERA NA DNU -->
     <section class="section">
       <div class="card">
         <h2>Ponude partnera</h2>
@@ -191,6 +270,12 @@
     <footer>© taxi-zagreb-croatia.com • Pre-book & transparent pricing</footer>
   </main>
 
+  <!-- brojači -->
+  <div id="counters">
+    <div class="badge" id="counter-global">Posjeta (ukupno): —</div>
+    <div class="badge" id="counter-local">Tvoj brojač: —</div>
+  </div>
+
 <script>
   const TEL_PHONE = "+385 97 762 0385";
   const WA_LINK   = "https://bit.ly/taxi1-zg";
@@ -200,8 +285,8 @@
     const tel = n => "tel:" + String(n).replace(/\s+/g,'');
     const callTop = document.getElementById('call-top');
     const callFr  = document.getElementById('call-friend');
-    if (callTop) callTop.href = tel(TEL_PHONE);
-    if (callFr)  callFr.href  = tel(TEL_PHONE);
+    if(callTop) callTop.href = tel(TEL_PHONE);
+    if(callFr)  callFr.href  = tel(TEL_PHONE);
 
     document.querySelectorAll('a[data-wa]').forEach(a => {
       a.href = WA_LINK;
@@ -224,11 +309,51 @@
     const list=(img.getAttribute('data-srcs')||'').split('|').map(s=>s.trim()).filter(Boolean);
     if(!list.length) return; let i=0;
     img.onerror=()=>{ i++; if(i<list.length){ img.src=list[i]; } };
-    img.src=list[0];
-    img.loading='lazy';
-    img.referrerPolicy='no-referrer';
+    img.src=list[0]; img.loading='lazy'; img.referrerPolicy='no-referrer';
   }
   document.querySelectorAll('img[data-srcs]').forEach(setSrcWithFallback);
+
+  // Brojači (isti princip kao EN)
+  (function(){
+    const globalEl=document.getElementById('counter-global');
+    const localEl=document.getElementById('counter-local');
+    const MIN_BASE=10000;
+    const fmt=n=>{ try{return n.toLocaleString('hr-HR')}catch(e){return String(n)} };
+
+    async function tryCountAPI(){
+      const NS='taxi-multi'; const KEY=(location.hostname||'local')+'-visits';
+      const api=p=>`https://api.countapi.xyz/${p}`;
+      let res=await fetch(api(`get/${NS}/${KEY}`),{cache:'no-store'});
+      if(res.status===404){ await fetch(api(`create?namespace=${NS}&key=${KEY}&value=${MIN_BASE}`)); }
+      else { try{ const cur=await res.json(); if(typeof cur.value==='number'&&cur.value<MIN_BASE){ await fetch(api(`set?namespace=${NS}&key=${KEY}&value=${MIN_BASE}`)); } }catch(e){} }
+      const hit=await fetch(api(`hit/${NS}/${KEY}`),{cache:'no-store'}); const data=await hit.json();
+      if(globalEl) globalEl.textContent=`Posjeta (ukupno): ${fmt(data.value||MIN_BASE)}`; return true;
+    }
+
+    async function trySeeYouFarmFallback(){
+      const urlKey=encodeURIComponent(location.origin+location.pathname);
+      const svgUrl=`https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=${urlKey}`;
+      const res=await fetch(svgUrl,{cache:'no-store'}); const svg=await res.text();
+      const m=svg.match(/>(\d+)</); const raw=m?parseInt(m[1],10):NaN;
+      const total=isNaN(raw)?null:(MIN_BASE+raw);
+      if(globalEl) globalEl.textContent=total?`Posjeta (ukupno): ${fmt(total)}`:'Posjeta (ukupno): n/a';
+    }
+
+    (async()=>{ let ok=false;
+      try{ const p=tryCountAPI(); const t=new Promise((_,rej)=>setTimeout(()=>rej(new Error('timeout')),1500)); await Promise.race([p,t]); ok=true; }
+      catch(e){ ok=false; }
+      if(!ok){ try{await trySeeYouFarmFallback()}catch(e){ if(globalEl) globalEl.textContent='Posjeta (ukupno): n/a'; } }
+    })();
+
+    try{
+      let v=parseInt(localStorage.getItem('taxi_local_counter')||'10000',10);
+      if(isNaN(v)||v<10000) v=10000; v++;
+      localStorage.setItem('taxi_local_counter', String(v));
+      if(localEl) localEl.textContent=`Tvoj brojač: ${v.toLocaleString('hr-HR')}`;
+    }catch(e){
+      if(localEl) localEl.textContent='Tvoj brojač: n/a';
+    }
+  })();
 </script>
 
 </body>
