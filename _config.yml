@@ -1,0 +1,16 @@
+title: "Taxi Zagreb — City & Airport"
+markdown: kramdown
+
+collections:
+  stories_en:
+    output: true
+    permalink: /stories/:name/
+  stories_hr:
+    output: true
+    permalink: /hr/stories/:name/
+
+defaults:
+  - scope: { path: "", type: "stories_en" }
+    values: { layout: story, lang: en }
+  - scope: { path: "", type: "stories_hr" }
+    values: { layout: story, lang: hr }
