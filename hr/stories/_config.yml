@@ -1,0 +1,39 @@
+# --- Osnovno ---
+title: "taxi-zagreb-croatia"
+url: "https://taxi-zagreb-croatia.com"
+permalink: /:path/:basename:output_ext
+
+# --- Markdown render ---
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+
+# Ne koristimo predefiniranu temu (HTML/CSS već imamo u fajlovima)
+theme: null
+
+# (Opcionalno, ali korisno; GitHub Pages ih podržava)
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# --- Zadane vrijednosti za naše “stories” stranice ---
+defaults:
+  - scope:
+      path: "stories"        # EN priče
+      type: "pages"
+    values:
+      layout: story
+      lang: en
+  - scope:
+      path: "hr/stories"     # HR priče
+      type: "pages"
+    values:
+      layout: story
+      lang: hr
+
+# --- Što ignorirati u buildu ---
+exclude:
+  - node_modules
+  - vendor
+  - README.md
