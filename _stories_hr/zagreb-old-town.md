@@ -1,6 +1,7 @@
 ---
 title: "Gornji grad — stare kamene ulice, tržnice i priče"
 slug: "zagreb-old-town"
+trans_key: "zagreb-old-town"
 date: 2025-10-16T10:00:00Z
 category: "putovanja"
 author: "Metaadvisor.eu"
