@@ -5,7 +5,7 @@ date: 2025-10-16T10:00:00Z
 category: "putovanja"
 author: "Metaadvisor.eu"
 lang: hr
-image_url: "/images/zagreb/Zagreb5.jpg"
+image_url: "/images/Zagreb5.jpg"
 image_alt: "Panorama starog grada s Katedralom i Sljemenom u daljini"
 summary: "Savršena gradska šetnja: Trg sv. Marka, stube prema Dolcu, pogled na katedralu i žuti Art paviljon."
 ---
@@ -18,11 +18,11 @@ Dobrodošli u **Gornji grad** — šetnja po srednjovjekovnim ulicama, šarenim 
 
 Srce Gornjeg grada je **Trg sv. Marka** s prepoznatljivim krovom. Uske ulice, dvorišta i vidikovci otvaraju pogled prema Katedrali.
 
-![Crkva sv. Marka — šarene pločice](/images/zagreb/Zagreb4.jpg)
+![Crkva sv. Marka — šarene pločice](/images/Zagreb4.jpg)
 
 Nadomak je **Kamenita vrata**, prolaz iz 13. stoljeća koji je preživio veliki požar — Zagrepčani i danas zapale svijeću u maloj kapelici.
 
-![Skyline katedrale i Sljeme](/images/zagreb/Zagreb5.jpg)
+![Skyline katedrale i Sljeme](/images/Zagreb5.jpg)
 
 ---
 
@@ -30,7 +30,7 @@ Nadomak je **Kamenita vrata**, prolaz iz 13. stoljeća koji je preživio veliki 
 
 Spustite se prema **Dolcu** — crveni suncobrani, povrće, sir i voće iz okolnih sela. **Stube na Dolac** su mali ritual: čujete žamor prije nego što vidite tezge.
 
-![Stube prema Dolcu](/images/zagreb/Zagreb7.jpg)
+![Stube prema Dolcu](/images/Zagreb7.jpg)
 
 Nedjeljom svratite na **Britanski trg** (antikviteti) ili vrlo rano na **Jakuševec** (buvljak).
 
@@ -40,7 +40,7 @@ Nedjeljom svratite na **Britanski trg** (antikviteti) ili vrlo rano na **Jakuše
 
 Par minuta od Gornjeg grada otvaraju se parkovi 19. stoljeća. Na **Trgu kralja Tomislava** **Art paviljon** blista žutom bojom — savršeno mjesto za predah.
 
-![Art paviljon na Tomislavcu](/images/zagreb/Zagreb15.jpg)
+![Art paviljon na Tomislavcu](/images/Zagreb15.jpg)
 
 ---
 
