@@ -1,0 +1,79 @@
+---
+layout: none
+title: "Priče i vodiči o Zagrebu"
+---
+<!doctype html>
+<html lang="hr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{{ page.title }} | taxi-zagreb-croatia.com</title>
+<meta name="description" content="Kratka čitanja sa slikama — aerodrom, tržnice, parkovi, izleti.">
+<link rel="canonical" href="{{ '/hr/stories/' | relative_url }}">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{ page.title }}">
+<meta property="og:description" content="Kratka čitanja sa slikama — aerodrom, tržnice, parkovi, izleti.">
+<meta property="og:url" content="{{ '/hr/stories/' | absolute_url }}">
+<meta property="og:image" content="https://placehold.co/1200x630?text=Zagreb+Stories">
+
+<style>
+  :root{--brand:#0ea5e9;--brand-2:#1276a7;--ink:#0b1a24;--muted:#5b6b7a;--line:#e8eef5;--card:#fff;
+        --bg-img:url('https://images.pexels.com/photos/210019/pexels-photo-210019.jpeg?auto=compress&cs=tinysrgb&w=2400');}
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;min-height:100vh;position:relative;}
+  body::before{content:"";position:fixed;inset:0;z-index:-2;background-image:var(--bg-img);background-size:cover;background-position:center;background-attachment:fixed;filter:saturate(1.05) contrast(1.04);}
+  body::after{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(255,255,255,.76),rgba(255,255,255,.88));}
+  .wrap{max-width:1100px;margin:0 auto;padding:28px 18px}
+  .lang{position:fixed;top:12px;right:16px;z-index:1000;font-weight:600;background:rgba(255,255,255,.9);border:1px solid var(--line);border-radius:999px;padding:6px 10px}
+  .lang a{color:#0b1a24;text-decoration:none}
+  header h1{margin:0 0 .4rem;font-size:clamp(28px,6vw,46px)}
+  .tag{margin:0 0 10px;color:var(--muted)}
+  .cta{background:var(--brand);color:#fff;text-decoration:none;font-weight:700;border-radius:999px;padding:10px 16px;display:inline-block}
+  .cta:hover{background:var(--brand-2)}
+  .ctas{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0 6px}
+  .grid{display:grid;gap:14px;grid-template-columns:1fr}
+  @media(min-width:700px){.grid{grid-template-columns:repeat(2,1fr)}}
+  @media(min-width:1000px){.grid{grid-template-columns:repeat(3,1fr)}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 6px 20px rgba(16,24,40,.05);text-decoration:none;color:inherit}
+  .card img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}
+  .inner{padding:12px}
+  .inner h3{margin:.25rem 0 .35rem;font-size:16px}
+  .inner p{margin:0;color:var(--muted);font-size:13px}
+  .section{padding:22px 0}
+  .block{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:0 6px 20px rgba(16,24,40,.05)}
+  footer{margin:24px 0 20px;text-align:center;color:var(--muted);font-size:12px}
+</style>
+</head>
+<body>
+
+  <div class="lang"><a href="{{ '/stories/' | relative_url }}">EN</a> | <span>HR</span></div>
+
+  <main class="wrap">
+    <header>
+      <h1>{{ page.title }}</h1>
+      <p class="tag">Kratka čitanja sa slikama — aerodrom, tržnice, parkovi, izleti.</p>
+      <div class="ctas">
+        <a class="cta" href="{{ '/hr/' | relative_url }}">Povratak na početnu</a>
+      </div>
+    </header>
+
+    <section class="section">
+      <div class="grid">
+        {% assign posts = site.stories_hr | sort: 'date' | reverse %}
+        {% for p in posts %}
+        <a class="card" href="{{ p.url | relative_url }}">
+          {% if p.image_url %}<img src="{{ p.image_url | relative_url }}" alt="{{ p.image_alt | default:p.title }}">{% endif %}
+          <div class="inner">
+            <h3>{{ p.title }}</h3>
+            {% if p.summary %}<p>{{ p.summary }}</p>{% endif %}
+          </div>
+        </a>
+        {% endfor %}
+      </div>
+    </section>
+
+    <footer>© taxi-zagreb-croatia.com • Priče & vodiči</footer>
+  </main>
+</body>
+</html>
