@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="{{ page.lang | default: 'en' }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  {%- comment -%} Nađi jezične parove po keyu (isti trans_key u svim jezicima) {%- endcomment -%}
+  {% assign key = page.trans_key | default: page.slug %}
+  {% assign en_doc = site.stories_en | where: "trans_key", key | first %}
+  {% assign hr_doc = site.stories_hr | where: "trans_key", key | first %}
+
+  <title>{{ page.title }}</title>
+
+  {%- assign meta_desc = page.description | default: page.summary | default: page.title -%}
+  <meta name="description" content="{{ meta_desc | escape }}">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="{{ page.url | absolute_url }}">
+
+  <!-- OpenGraph -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="{{ page.title }}">
+  <meta property="og:description" content="{{ meta_desc }}">
+  <meta property="og:url" content="{{ page.url | absolute_url }}">
+  {% if page.image_url %}
+    <meta property="og:image" content="{{ page.image_url | absolute_url }}">
+  {% endif %}
+
+  {%- comment -%} hreflang (SEO) – EN, HR i x-default {%- endcomment -%}
+  {% if en_doc %}
+    <link rel="alternate" hreflang="en" href="{{ en_doc.url | absolute_url }}">
+  {% endif %}
+  {% if hr_doc %}
+    <link rel="alternate" hreflang="hr" href="{{ hr_doc.url | absolute_url }}">
+  {% endif %}
+  <link rel="alternate" hreflang="x-default" href="{{ (en_doc | default: page).url | absolute_url }}">
+
+  <style>
+    :root{--ink:#0b1a24;--muted:#5b6b7a;--line:#e8eef5;--card:#fff;--brand:#0ea5e9}
+    *{box-sizing:border-box}
+    body{margin:0;color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:#f6f9fc}
+    .wrap{max-width:1000px;margin:0 auto;padding:22px 16px}
+    /* jezični preklopnik */
+    .langswitch{position:fixed;top:12px;right:16px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 10px;font-weight:600;z-index:10}
+    .langswitch a{color:var(--ink);text-decoration:none}
+    /* naslovi i hero */
+    header h1{margin:18px 0 10px;font-size:clamp(26px,4.5vw,40px)}
+    .hero{margin:8px 0 18px;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:#fff}
+    .hero img,.img{width:100%;height:auto;display:block;border-radius:16px}
+    /* kartica članka */
+    article{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px}
+    p,li{line-height:1.65}
+    .section{margin:28px 0}
+    /* oglasni blok (ako je uključen u front matteru) */
+    .ad{margin:28px 0;padding:20px;border:1px solid var(--line);border-radius:16px;background:#fafafa}
+    .btn{display:inline-block;background:var(--brand);color:#fff;text-decoration:none;font-weight:700;border-radius:999px;padding:10px 16px}
+  </style>
+</head>
+<body>
+
+  {%- comment -%} Jezični preklopnik po trans_key {%- endcomment -%}
+  <div class="langswitch">
+    {% if page.lang == 'hr' %}
+      {% if en_doc %}<a href="{{ en_doc.url | relative_url }}">EN</a>{% else %}<span style="opacity:.5">EN</span>{% endif %} | <span>HR</span>
+    {% else %}
+      <span>EN</span> | {% if hr_doc %}<a href="{{ hr_doc.url | relative_url }}">HR</a>{% else %}<span style="opacity:.5">HR</span>{% endif %}
+    {% endif %}
+  </div>
+
+  <main class="wrap">
+    <header>
+      <h1>{{ page.title }}</h1>
+
+      {% if page.image_url %}
+        <div class="hero">
+          <img src="{{ page.image_url | relative_url }}"
+               alt="{{ page.image_alt | default: page.title }}">
+        </div>
+      {% endif %}
+
+      {% if page.summary %}
+        <p style="color:var(--muted)">{{ page.summary }}</p>
+      {% endif %}
+    </header>
+
+    <article>
+      {{ content }}
+
+      {% if page.ads == "aads" %}
+      <div class="ad">
+        <h2 style="margin-top:0">
+          {% if page.lang == "hr" %}Planiraj put{% else %}Plan your trip{% endif %}
+        </h2>
+        <p><em>
+          {% if page.lang == "hr" %}
+            Pronađi letove, hotele i ture
+          {% else %}
+            Find flights, hotels, and tours
+          {% endif %}
+        </em></p>
+
+        <!-- A-ADS snippet -->
+        <div id="frame" style="width:100%;margin:auto;position:relative;z-index:10">
+          <iframe data-aa='2413812'
+                  src='//acceptable.a-ads.com/2413812/?size=Adaptive'
+                  style="border:0;padding:0;width:70%;height:auto;overflow:hidden;display:block;margin:auto"></iframe>
+        </div>
+      </div>
+      {% endif %}
+    </article>
+  </main>
+</body>
+</html>
