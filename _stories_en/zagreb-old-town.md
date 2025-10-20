@@ -1,6 +1,7 @@
 ---
 title: "Zagreb Old Town — cobblestones, markets & hidden stories"
 slug: "zagreb-old-town"
+trans_key: "zagreb-old-town"
 date: 2025-10-16T10:00:00Z
 category: "travel"
 author: "Metaadvisor.eu"
